@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/microsoft_sqlserver_mssql_jdbc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovieProject/BLL/MovieManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovieProject/DAL/IMovieDataAccess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Model/MainModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TMAO MovieProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TMAO MovieProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/BLL/MovieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/BLL/MovieManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/DAL/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/DAL/db/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/DAL/MovieDAO_DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/DAL/db/MovieDAO_DB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Model/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Model/MainModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +44,20 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/IdeaProjects/TMAOMovieProject/src/MovieProject",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\IdeaProjects\TMAOMovieProject\src\MovieProject" />
+      <recent name="C:\IdeaProjects\TMAOMovieProject\src\MovieProject\GUI\Controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\IdeaProjects\TMAOMovieProject\src\MovieProject" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="MovieProject.DAL" />
     </key>

@@ -7,9 +7,9 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.util.List;
 
 public interface IMovieDataAccess {
-    public List<Movie> getAllMovies() throws SQLServerException;
+    List<Movie> getAllMovies() throws SQLServerException;
 
-    public Movie addMovie() throws Exception;
+    Movie addMovie() throws Exception;
 
-    public void deleteMovie() throws Exception;
+    void deleteMovie() throws Exception;
 }

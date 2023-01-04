@@ -1,6 +1,8 @@
-package MovieProject.DAL;
+package MovieProject.DAL.db;
 
 import MovieProject.BE.Movie;
+import MovieProject.DAL.IMovieDataAccess;
+import MovieProject.DAL.db.DatabaseConnector;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDAO_DB implements IMovieDataAccess{
+public class MovieDAO_DB implements IMovieDataAccess {
     private DatabaseConnector databaseConnector;
 
 

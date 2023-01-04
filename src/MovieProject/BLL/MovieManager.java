@@ -2,7 +2,7 @@ package MovieProject.BLL;
 
 import MovieProject.BE.Movie;
 import MovieProject.DAL.IMovieDataAccess;
-import MovieProject.DAL.MovieDAO_DB;
+import MovieProject.DAL.db.MovieDAO_DB;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,10 +19,11 @@ public class MovieManager {
         return movieDAO.getAllMovies();
     }
 
-    /*public Movie addMovie() {
-        return
-    }*/
+    public Movie addMovie() throws Exception {
+        return movieDAO.addMovie();
+    }
 
-    public void deleteMovie() {
+    public void deleteMovie() throws Exception {
+        movieDAO.deleteMovie();
     }
 }
