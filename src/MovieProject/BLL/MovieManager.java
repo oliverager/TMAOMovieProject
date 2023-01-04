@@ -21,15 +21,13 @@ public class MovieManager {
 
 
     public Movie addMovie(String name, double rating, String fileLink, String lastview) throws Exception {
-        return movieDAO.addMovie( name, rating,  fileLink,  lastview);
+        return movieDAO.addMovie( name, rating,  fileLink, lastview);
     }
 
     public void deleteMovie(Movie movie) throws Exception {
         movieDAO.deleteMovie(movie);
-
-    public Movie addMovie(String name, double rating, String fileLink) throws Exception {
-        return movieDAO.addMovie(name, rating, fileLink);
     }
+
 
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieDAO.deletedMovie(deletedMovie);

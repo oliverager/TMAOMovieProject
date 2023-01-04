@@ -11,6 +11,7 @@ import java.util.List;
 
 public class MovieDAO_DB implements IMovieDAO {
     private DatabaseConnector databaseConnector;
+
     public MovieDAO_DB() throws IOException {
         databaseConnector = new DatabaseConnector();
     }
@@ -56,21 +57,19 @@ public class MovieDAO_DB implements IMovieDAO {
             throw new RuntimeException("Could not get Songs from database", ex);
         }
     }
+
     @Override
-
     public Movie addMovie(String name, double rating, String fileLink, String lastview) throws Exception {
-
         String sql = "INSERT INTO movie (name,rating, filelink, lastview) VALUES (?,?,?,?);";
 
-        try (Connection conn = databaseConnector.getConnection()){
+        try (Connection conn = databaseConnector.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             // Bind parameters
             stmt.setString(1, name);
-            stmt.setDouble(2,rating);
+            stmt.setDouble(2, rating);
             stmt.setString(3, fileLink);
             stmt.setString(4, lastview);
-
 
 
             // Run the specified SQL statement
@@ -80,7 +79,7 @@ public class MovieDAO_DB implements IMovieDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             int id = 0;
 
-            if ( rs.next()) {
+            if (rs.next()) {
                 id = rs.getInt(1);
             }
 
@@ -88,27 +87,19 @@ public class MovieDAO_DB implements IMovieDAO {
             Movie movie = new Movie(id, name, rating, fileLink, lastview);
             System.out.println(movie);
             return movie;
-        }
-        catch (SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
             throw new Exception("Could not create song", ex);
         }
-
-
-
-    public Movie addMovie(String name, double rating, String fileLink) throws Exception {
-        return null;
-
     }
 
+
     @Override
-
     public void deleteMovie(Movie movie) throws Exception {
-        try(Connection conn = databaseConnector.getConnection()) {
+        try (Connection conn = databaseConnector.getConnection()) {
 
-
-            String sql= "DELETE CatMovie FROM CatMovie inner join Movie on Movie.Id=CatMovie.MOvieId " +
-                        "WHERE CatMovie.ID=? DELETE from Movie WHERE Movie.Id=?;";
+            String sql = "DELETE CatMovie FROM CatMovie inner join Movie on Movie.Id=CatMovie.MOvieId " +
+                    "WHERE CatMovie.ID=? DELETE from Movie WHERE Movie.Id=?;";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -126,14 +117,13 @@ public class MovieDAO_DB implements IMovieDAO {
             stmt.executeUpdate();
 
 
-        }
-        catch (SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
             throw new Exception("Could not delete song", ex);
 
         }
 
-    public void deletedMovie(Movie movie) throws Exception {
-
     }
+
 }
+
