@@ -22,14 +22,7 @@ public class Main extends Application {
 
 
 
-//Hej med jer
 
-//Hej igen
-
-//hej med dig
-
-
-//Hej igen igen
 
 
 
