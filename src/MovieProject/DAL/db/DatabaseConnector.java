@@ -36,11 +36,11 @@ public class DatabaseConnector {
 
             //System.out.println("Is it open? " + !connection.isClosed());
             MovieDAO_DB movieDAODb= new MovieDAO_DB();
-            movieDAODb.getAllMovies();
+            movieDAODb.addMovie("Julemanden",1.2,"sss","sssss");
 
 
         } //Connection gets closed here
-        catch (IOException e) {
+        catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

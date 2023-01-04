@@ -22,12 +22,12 @@ public class MainModel {
         return movies;
     }
 
-    public void addMovie() throws Exception {
-        Movie m = movieManager.addMovie();
+    public void addMovie(String name, double rating, String fileLink, String lastview) throws Exception {
+        Movie m = movieManager.addMovie( name,  rating,  fileLink,  lastview);
         movies.add(m);
     }
 
-    public void deleteMovie() throws Exception {
-        movieManager.deleteMovie();
+    public void deleteMovie(Movie movie) throws Exception {
+        movieManager.deleteMovie(movie);
     }
 }

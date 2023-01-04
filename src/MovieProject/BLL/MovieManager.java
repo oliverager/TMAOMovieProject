@@ -19,11 +19,11 @@ public class MovieManager {
         return movieDAO.getAllMovies();
     }
 
-    public Movie addMovie() throws Exception {
-        return movieDAO.addMovie();
+    public Movie addMovie(String name, double rating, String fileLink, String lastview) throws Exception {
+        return movieDAO.addMovie( name, rating,  fileLink,  lastview);
     }
 
-    public void deleteMovie() throws Exception {
-        movieDAO.deleteMovie();
+    public void deleteMovie(Movie movie) throws Exception {
+        movieDAO.deleteMovie(movie);
     }
 }

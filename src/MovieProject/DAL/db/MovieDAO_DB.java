@@ -6,10 +6,7 @@ import MovieProject.DAL.db.DatabaseConnector;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,12 +66,75 @@ public class MovieDAO_DB implements IMovieDataAccess {
     }
 
     @Override
-    public Movie addMovie() throws Exception {
-        return null;
+    public Movie addMovie(String name, double rating, String fileLink, String lastview) throws Exception {
+
+        String sql = "INSERT INTO movie (name,rating, filelink, lastview) VALUES (?,?,?,?);";
+
+        try (Connection conn = databaseConnector.getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            // Bind parameters
+            stmt.setString(1, name);
+            stmt.setDouble(2,rating);
+            stmt.setString(3, fileLink);
+            stmt.setString(4, lastview);
+
+
+
+            // Run the specified SQL statement
+            stmt.executeUpdate();
+
+            // Get the generated ID from the DB
+            ResultSet rs = stmt.getGeneratedKeys();
+            int id = 0;
+
+            if ( rs.next()) {
+                id = rs.getInt(1);
+            }
+
+            // Create Song object and send up the layers
+            Movie movie = new Movie(id, name, rating, fileLink, lastview);
+            System.out.println(movie);
+            return movie;
+        }
+        catch (SQLException ex){
+            ex.printStackTrace();
+            throw new Exception("Could not create song", ex);
+        }
+
+
     }
 
     @Override
-    public void deleteMovie() throws Exception {
+    public void deleteMovie(Movie movie) throws Exception {
+        try(Connection conn = databaseConnector.getConnection()) {
+
+
+            String sql= "DELETE CatMovie FROM CatMovie inner join Movie on Movie.Id=CatMovie.MOvieId " +
+                        "WHERE CatMovie.ID=? DELETE from Movie WHERE Movie.Id=?;";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+
+            //Vi sletter fra vores song tabel. Men eftersom vi har foreign keys er vi nød til specificere dem. Derfor skrives inner join.
+            //Her beskriver bindingen mellem child og parent tabellerne.
+            // Til sidst beskrives hvilket parameter, her movie nummer, vi sletter efter. Nu vil movie og referencer i krydstabellen
+            //blive slettet.
+
+            //Bind parameters
+
+            stmt.setInt(1, movie.getId());
+            stmt.setInt(2, movie.getId());
+
+            stmt.executeUpdate();
+
+
+        }
+        catch (SQLException ex){
+            ex.printStackTrace();
+            throw new Exception("Could not delete song", ex);
+
+        }
 
     }
 
