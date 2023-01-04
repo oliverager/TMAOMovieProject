@@ -57,6 +57,7 @@ public class MovieDAO_DB implements IMovieDataAccess {
                 allMovies.add(movie);
             }
 
+            System.out.println(allMovies);
             return allMovies;
 
         }

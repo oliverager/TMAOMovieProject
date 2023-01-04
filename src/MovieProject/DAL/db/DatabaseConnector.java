@@ -3,6 +3,7 @@ package MovieProject.DAL.db;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -33,8 +34,14 @@ public class DatabaseConnector {
 
         try (Connection connection = databaseConnector.getConnection()) {
 
-            System.out.println("Is it open? " + !connection.isClosed());
+            //System.out.println("Is it open? " + !connection.isClosed());
+            MovieDAO_DB movieDAODb= new MovieDAO_DB();
+            movieDAODb.getAllMovies();
+
 
         } //Connection gets closed here
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
