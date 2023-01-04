@@ -1,6 +1,9 @@
-package MovieProject.DAL;
+package MovieProject.DAL.db;
 
 import MovieProject.BE.Movie;
+import MovieProject.DAL.IMovieDataAccess;
+import MovieProject.DAL.db.DatabaseConnector;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDAO_DB {
+public class MovieDAO_DB implements IMovieDataAccess {
     private DatabaseConnector databaseConnector;
 
 
@@ -21,7 +24,7 @@ public class MovieDAO_DB {
 
 
     @Override
-    public List<Movie> getAllMovies() throws Exception {
+    public List<Movie> getAllMovies() throws SQLServerException {
         ArrayList<Movie> allMovies = new ArrayList<>();
 
 
@@ -60,22 +63,19 @@ public class MovieDAO_DB {
         catch (SQLException ex)
         {
             ex.printStackTrace();
-            throw new Exception("Could not get Songs from database", ex);
+            throw new RuntimeException("Could not get Songs from database", ex);
         }
     }
 
+    @Override
+    public Movie addMovie() throws Exception {
+        return null;
+    }
 
+    @Override
+    public void deleteMovie() throws Exception {
 
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 }
