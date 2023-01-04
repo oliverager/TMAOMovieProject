@@ -1,7 +1,7 @@
 package MovieProject.BLL;
 
 import MovieProject.BE.Movie;
-import MovieProject.DAL.IMovieDataAccess;
+import MovieProject.DAL.IMovieDAO;
 import MovieProject.DAL.db.MovieDAO_DB;
 
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MovieManager {
 
-    private IMovieDataAccess movieDAO;
+    private IMovieDAO movieDAO;
 
     public MovieManager() throws IOException {
         movieDAO = new MovieDAO_DB();
@@ -19,11 +19,12 @@ public class MovieManager {
         return movieDAO.getAllMovies();
     }
 
-    public Movie addMovie() throws Exception {
-        return movieDAO.addMovie();
+    public Movie addMovie(String name, double rating, String fileLink) throws Exception {
+        return movieDAO.addMovie(name, rating, fileLink);
     }
 
-    public void deleteMovie() throws Exception {
-        movieDAO.deleteMovie();
+    public void deletedMovie(Movie deletedMovie) throws Exception {
+        movieDAO.deletedMovie(deletedMovie);
+
     }
 }

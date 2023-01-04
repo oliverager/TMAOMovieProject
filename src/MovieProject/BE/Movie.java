@@ -8,17 +8,6 @@ public class Movie {
     private String fileLink;
     private String lastview;
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", rating=" + rating +
-                ", fileLink='" + fileLink + '\'' +
-                ", lastview='" + lastview + '\'' +
-                '}';
-    }
-
     public Movie(int id, String name, double rating, String fileLink, String lastview) {
         this.id = id;
         this.name = name;
@@ -65,5 +54,16 @@ public class Movie {
 
     public void setLastview(String lastview) {
         this.lastview = lastview;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", rating=" + rating +
+                ", fileLink='" + fileLink + '\'' +
+                ", lastview='" + lastview + '\'' +
+                '}';
     }
 }
