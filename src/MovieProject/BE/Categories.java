@@ -3,33 +3,33 @@ package MovieProject.BE;
 public class Categories {
 
     private int id;
-    private String Name;
+    private String Categories;
 
     public Categories(int id, String name) {
         this.id = id;
-        Name = name;
+        Categories = name;
     }
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return Name;
+    public String getCategories() {
+        return Categories;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setCategories(String categories) {
+        Categories = categories;
     }
 
     @Override
     public String toString() {
         return "Categories{" +
                 "id=" + id +
-                ", Name='" + Name + '\'' +
+                ", Name='" + Categories + '\'' +
                 '}';
     }
 }
