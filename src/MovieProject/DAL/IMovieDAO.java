@@ -14,8 +14,8 @@ public interface IMovieDAO {
 
 
 
-    void deleteMovie(Movie movie) throws Exception;
 
 
 
+    void deletedMovie(Movie deletedMovie) throws Exception;
 }

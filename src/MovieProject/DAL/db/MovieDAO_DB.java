@@ -5,6 +5,7 @@ import MovieProject.DAL.IMovieDAO;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.io.IOException;
+import java.security.cert.Extension;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,8 +95,9 @@ public class MovieDAO_DB implements IMovieDAO {
     }
 
 
+
     @Override
-    public void deleteMovie(Movie movie) throws Exception {
+    public void deletedMovie(Movie deletedMovie) throws Exception {
         try (Connection conn = databaseConnector.getConnection()) {
 
             String sql = "DELETE CatMovie FROM CatMovie inner join Movie on Movie.Id=CatMovie.MOvieId " +
@@ -111,8 +113,9 @@ public class MovieDAO_DB implements IMovieDAO {
 
             //Bind parameters
 
-            stmt.setInt(1, movie.getId());
-            stmt.setInt(2, movie.getId());
+            Extension movie;
+            stmt.setInt(1, deletedMovie.getId());
+            stmt.setInt(2, deletedMovie.getId());
 
             stmt.executeUpdate();
 

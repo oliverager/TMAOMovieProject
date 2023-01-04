@@ -24,10 +24,7 @@ public class MovieManager {
         return movieDAO.addMovie( name, rating,  fileLink, lastview);
     }
 
-    public void deleteMovie(Movie movie) throws Exception {
-        movieDAO.deleteMovie(movie);
-    }
-
+    
 
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieDAO.deletedMovie(deletedMovie);

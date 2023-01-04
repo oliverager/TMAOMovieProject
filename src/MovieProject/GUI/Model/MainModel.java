@@ -28,6 +28,6 @@ public class MainModel {
     }
 
     public void deleteMovie(Movie movie) throws Exception {
-        movieManager.deleteMovie(movie);
+        movieManager.deletedMovie(movie);
     }
 }
