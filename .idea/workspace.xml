@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovieProject/BLL/MovieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/BLL/MovieManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovieProject/DAL/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/DAL/db/DatabaseConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovieProject/DAL/MovieDAO_DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/DAL/db/MovieDAO_DB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Model/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Model/MainModel.java" afterDir="false" />
-    </list>
+    <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +41,8 @@
     "last_opened_file_path": "C:/IdeaProjects/TMAOMovieProject/src/MovieProject",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -91,6 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1672736390510</updated>
       <workItem from="1672736392921" duration="5851000" />
+      <workItem from="1672836203092" duration="48000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1672736843025</created>
