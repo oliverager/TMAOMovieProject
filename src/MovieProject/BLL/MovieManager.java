@@ -8,26 +8,17 @@ import java.io.IOException;
 import java.util.List;
 
 public class MovieManager {
-
     private IMovieDAO movieDAO;
-
     public MovieManager() throws IOException {
         movieDAO = new MovieDAO_DB();
     }
-
-    public List<Movie> getMovies() throws Exception {
+    public List<Movie> getAllMovies() throws Exception {
         return movieDAO.getAllMovies();
     }
-
-
     public Movie addMovie(String name, double rating, String fileLink, String lastview) throws Exception {
-        return movieDAO.addMovie( name, rating,  fileLink, lastview);
+        return movieDAO.addMovie(name, rating, fileLink, lastview);
     }
-
-    
-
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieDAO.deletedMovie(deletedMovie);
-
     }
 }
