@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="gitignore">
-      <change afterPath="$PROJECT_DIR$/src/MovieProject/BE/Categories.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovieProject/BE/Movie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,13 +29,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -49,6 +46,8 @@
       <option name="presentableId" value="Default" />
       <updated>1672736390510</updated>
       <workItem from="1672736392921" duration="3056000" />
+      <workItem from="1672821598295" duration="187000" />
+      <workItem from="1672821824322" duration="21000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1672736843025</created>
