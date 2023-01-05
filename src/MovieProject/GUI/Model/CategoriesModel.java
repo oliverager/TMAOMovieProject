@@ -17,8 +17,10 @@ public class CategoriesModel {
     public ObservableList<Categories> getCategoriesToBeViewed() {
         return categoriesToBeViewed;
     }
+
     public void addCategories(String name) throws Exception {
-        categoriesManager.addCategories(name);
+        Categories c = categoriesManager.addCategories(name);
+        categoriesToBeViewed.add(c);
     }
     public void deletedCategories(Categories deletedCategories) throws Exception{
         categoriesManager.deletedCategories(deletedCategories);
