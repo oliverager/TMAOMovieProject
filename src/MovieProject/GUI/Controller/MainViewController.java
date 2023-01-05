@@ -58,7 +58,8 @@ public class MainViewController extends BaseController implements Initializable 
     }
 
     public void handleNewMovie(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/View/NewMovie.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MovieProject/GUI/View/NewMovie.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
 
