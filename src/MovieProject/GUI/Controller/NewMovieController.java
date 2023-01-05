@@ -11,8 +11,10 @@ import MovieProject.GUI.Model.MovieModel;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -39,8 +41,8 @@ public class NewMovieController extends BaseController implements Initializable 
     private TextField txtURating;
 
 
-    
     private MovieModel movieModel;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -59,5 +61,20 @@ public class NewMovieController extends BaseController implements Initializable 
     public void handleCancelMovie(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelMovie.getScene().getWindow();
         stage.close();
+    }
+
+    public void handleChooseFIle(ActionEvent actionEvent) { //Starter et søgevindue til filer. Den kan du bruge.
+        String fileName;
+        Stage stage = new Stage();
+        FileChooser fc = new FileChooser();
+        File file = fc.showOpenDialog(stage);
+        if (file != null) {
+
+            fileName = file.toURI().toString();
+            fileName = fileName.substring(6);
+            String newFile = fileName;
+            fileName = newFile.replace("%20", " ");
+            txtFilePath.setText(fileName);
+        }
     }
 }
