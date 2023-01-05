@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MovieProject.GUI.Controller.MainViewController">
+<AnchorPane prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MovieProject.GUI.Controller.MainViewController">
    <children>
       <TableView fx:id="categoriesTableView" layoutX="-46.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columns>
@@ -20,7 +20,7 @@
         </columns>
       </TableView>
       <TextArea fx:id="movieTextArea" layoutX="659.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="660.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
-      <Button fx:id="categoriesAdd" layoutX="79.0" layoutY="560.0" mnemonicParsing="false" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" />
+      <Button fx:id="categoriesAdd" layoutX="79.0" layoutY="560.0" mnemonicParsing="false" onAction="#handleNewCategory" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" />
       <Button fx:id="categoriesDelete" layoutX="69.0" layoutY="565.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="10.0" />
       <Button fx:id="movieAdd" layoutX="240.0" layoutY="565.0" mnemonicParsing="false" onAction="#handleNewMovie" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="240.0" />
       <Button fx:id="movieDelete" layoutX="286.0" layoutY="565.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="10.0" />

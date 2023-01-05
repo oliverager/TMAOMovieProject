@@ -2,6 +2,7 @@ package MovieProject.GUI.Controller;
 
 import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
+import MovieProject.GUI.Model.CategoriesModel;
 import MovieProject.GUI.Model.MovieModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +46,8 @@ public class MainViewController extends BaseController implements Initializable 
 
     private MovieModel movieModel;
 
+    private CategoriesModel categoriesModel;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         categoriesTableColumn.setCellValueFactory(new PropertyValueFactory<Categories, String>("Categories"));
@@ -78,5 +81,21 @@ public class MainViewController extends BaseController implements Initializable 
     @Override
     public void setup() {
 
+    }
+
+    public void handleNewCategory(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MovieProject/GUI/View/NewCategory.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+
+        NewCategoryController controller = loader.getController();
+        controller.setCategoriesModel(categoriesModel);
+        controller.setup();
+
+        stage.setScene(new Scene(root));
+        stage.setTitle("New Category");
+        stage.initModality(Modality.NONE);
+        stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+        stage.show();
     }
 }
