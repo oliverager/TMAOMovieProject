@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories" />
+    <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
+      <change afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/NewCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MovieProject/GUI/View/NewCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BE/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BE/Movie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BLL/MovieManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BLL/MovieManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/IMovieDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/IMovieDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/DatabaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/DatabaseConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/MovieDAO_DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/MovieDAO_DB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Model/MovieModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Model/MovieModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/View/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/View/mainWindow.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
