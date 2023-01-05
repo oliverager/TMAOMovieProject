@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -25,15 +26,12 @@ import java.util.ResourceBundle;
 
 public class MainViewController extends BaseController implements Initializable {
     @FXML
+    private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
+        @FXML
     private TableView<Categories> categoriesTableView;
     @FXML
-    private TableColumn<Categories, String> categoriesTableColumn;
-    @FXML
     private TableView<Movie> MovieTableView;
-    @FXML
-    private TableColumn<Movie, String> NameTableColumn;
-    @FXML
-    private TableColumn<Movie, Double> RatingTableColumn;
+
     public TextArea movieTextArea;
     public Button categoriesAdd;
     public Button categoriesDelete;
@@ -44,21 +42,61 @@ public class MainViewController extends BaseController implements Initializable 
 
     public Button movieDelete;
 
-    private MovieModel movieModel;
 
-    private CategoriesModel categoriesModel;
+    MovieModel movieModel;
+
+    CategoriesModel categoriesModel;
+
+    public MainViewController() throws Exception {
+
+        movieModel = new MovieModel();
+        categoriesModel=new CategoriesModel();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        categoriesTableColumn.setCellValueFactory(new PropertyValueFactory<Categories, String>("Categories"));
 
-        //categoriesTableView.getItems(categoriesToBeViewed);
-
-        NameTableColumn.setCellValueFactory(new PropertyValueFactory<Movie, String>("Name"));
-        RatingTableColumn.setCellValueFactory(new PropertyValueFactory<Movie, Double>("Rating"));
-
-        //MovieTableView.getItems(moviesToBeViewed);
+        setColoumsForMovies();
+        setColoumsForCategories();
+        keyPressListenerMovie();
+        mouseListenerMovie(); //Jeg har ikke lagt ind for kategorier endnu, men nu kan se hvordan de virker.
     }
+
+    public void setColoumsForMovies()
+    {
+       NameTableColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        RatingTableColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
+        ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("toOld"));
+        MovieTableView.setItems(movieModel.getObservableMovies());
+    }
+
+
+    public void setColoumsForCategories()
+    {
+        categoriesTableColumn.setCellValueFactory(new PropertyValueFactory<>("Categories"));
+        categoriesTableView.setItems(categoriesModel.getCategoriesToBeViewed());
+    }
+
+
+    public void keyPressListenerMovie()
+    {
+        MovieTableView.setOnKeyPressed(event -> {
+            if (event.getCode()== KeyCode.ENTER)
+                System.out.println("hej");
+        });
+    }
+
+
+    public void mouseListenerMovie()
+    {
+        MovieTableView.setOnMouseClicked(event -> {
+            System.out.println("Hej igen");
+        });
+    }
+
+
+
+
 
     public void handleNewMovie(ActionEvent actionEvent) throws IOException {
 

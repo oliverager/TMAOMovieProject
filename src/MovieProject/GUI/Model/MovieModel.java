@@ -20,6 +20,7 @@ public class MovieModel {
         moviesToBeViewed.addAll(movieManager.getAllMovies());
     }
     public ObservableList<Movie> getObservableMovies(){
+
         return moviesToBeViewed;
     }
 

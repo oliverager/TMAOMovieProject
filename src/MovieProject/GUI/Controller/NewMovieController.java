@@ -2,8 +2,8 @@ package MovieProject.GUI.Controller;
 
 import MovieProject.BE.Categories;
 import javafx.collections.ObservableList;
-import MovieProject.GUI.Model.MovieModel
-import MovieProject.GUI.Model.CategoriesModel
+//import MovieProject.GUI.Model;
+import MovieProject.GUI.Model.CategoriesModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,7 +44,7 @@ public class NewMovieController extends BaseController implements Initializable 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        lstCategory.setItems;
+        //lstCategory.setItems;
     }
 
 
