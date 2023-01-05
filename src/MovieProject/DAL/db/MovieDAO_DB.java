@@ -7,6 +7,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.security.cert.Extension;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,8 @@ public class MovieDAO_DB implements IMovieDAO {
                 String name = rs.getString("Name");
                 double rating = rs.getDouble("Rating");
                 String filelink = rs.getString("Filelink");
-                String lastview = rs.getString("Lastview");
+                LocalDate lastview = rs.getDate("Lastview").toLocalDate();
+
 
 
                 //  System.out.println(time);
@@ -59,7 +61,7 @@ public class MovieDAO_DB implements IMovieDAO {
     }
 
     @Override
-    public Movie addMovie(String name, double rating, String fileLink, String lastview) throws Exception {
+    public Movie addMovie(String name, double rating, String fileLink, LocalDate lastview) throws Exception {
         String sql = "INSERT INTO movie (name,rating, filelink, lastview) VALUES (?,?,?,?);";
 
         try (Connection conn = databaseConnector.getConnection()) {
@@ -69,7 +71,7 @@ public class MovieDAO_DB implements IMovieDAO {
             stmt.setString(1, name);
             stmt.setDouble(2, rating);
             stmt.setString(3, fileLink);
-            stmt.setString(4, lastview);
+            stmt.setDate(4, Date.valueOf(lastview));
 
 
             // Run the specified SQL statement

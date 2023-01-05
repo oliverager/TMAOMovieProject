@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 // Project imports
 import MovieProject.BE.Movie;
 
+import java.time.LocalDate;
+
 public class MovieModel {
     private ObservableList<Movie> moviesToBeViewed;
     private MovieManager movieManager;
@@ -21,7 +23,7 @@ public class MovieModel {
         return moviesToBeViewed;
     }
 
-    public void addMovie(String name, double rating, String fileLink,String lastview) throws Exception {
+    public void addMovie(String name, double rating, String fileLink, LocalDate lastview) throws Exception {
         movieManager.addMovie(name, rating, fileLink, lastview);
     }
     public void deletedMovie(Movie deletedMovie) throws Exception {

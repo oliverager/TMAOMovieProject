@@ -1,14 +1,16 @@
 package MovieProject.BE;
 
+import java.time.LocalDate;
+
 public class Movie {
 
     private int id;
     private String name;
     private double rating;
     private String fileLink;
-    private String lastview;
+    private LocalDate lastview;
 
-    public Movie(int id, String name, double rating, String fileLink, String lastview) {
+    public Movie(int id, String name, double rating, String fileLink, LocalDate lastview) {
         this.id = id;
         this.name = name;
         this.rating = rating;
@@ -48,11 +50,11 @@ public class Movie {
         this.fileLink = fileLink;
     }
 
-    public String getLastview() {
+    public LocalDate getLastview() {
         return lastview;
     }
 
-    public void setLastview(String lastview) {
+    public void setLastview(LocalDate lastview) {
         this.lastview = lastview;
     }
 

@@ -5,6 +5,7 @@ import MovieProject.DAL.IMovieDAO;
 import MovieProject.DAL.db.MovieDAO_DB;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class MovieManager {
@@ -15,7 +16,7 @@ public class MovieManager {
     public List<Movie> getAllMovies() throws Exception {
         return movieDAO.getAllMovies();
     }
-    public Movie addMovie(String name, double rating, String fileLink, String lastview) throws Exception {
+    public Movie addMovie(String name, double rating, String fileLink, LocalDate lastview) throws Exception {
         return movieDAO.addMovie(name, rating, fileLink, lastview);
     }
     public void deletedMovie(Movie deletedMovie) throws Exception {

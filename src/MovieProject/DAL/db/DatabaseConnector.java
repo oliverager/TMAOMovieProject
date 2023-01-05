@@ -36,7 +36,7 @@ public class DatabaseConnector {
 
             //System.out.println("Is it open? " + !connection.isClosed());
             MovieDAO_DB movieDAODb= new MovieDAO_DB();
-            movieDAODb.addMovie("Julemanden",1.2,"sss","sssss");
+          //  movieDAODb.addMovie("Julemanden",1.2,"sss","sssss");
 
 
         } //Connection gets closed here
