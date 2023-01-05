@@ -6,6 +6,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class DatabaseConnector {
 
@@ -36,7 +37,10 @@ public class DatabaseConnector {
 
             //System.out.println("Is it open? " + !connection.isClosed());
             MovieDAO_DB movieDAODb= new MovieDAO_DB();
-          //  movieDAODb.addMovie("Julemanden",1.2,"sss","sssss");
+
+
+            movieDAODb.getAllMovies();
+          //  movieDAODb.addMovie("Gurli gris2",1.2,"sss");
 
 
         } //Connection gets closed here

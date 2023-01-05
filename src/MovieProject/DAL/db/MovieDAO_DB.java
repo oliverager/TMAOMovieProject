@@ -11,6 +11,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class MovieDAO_DB implements IMovieDAO {
     private DatabaseConnector databaseConnector;
 
@@ -22,7 +24,7 @@ public class MovieDAO_DB implements IMovieDAO {
     @Override
     public List<Movie> getAllMovies() throws SQLServerException {
         ArrayList<Movie> allMovies = new ArrayList<>();
-
+        boolean toOld;
 
         try (Connection conn = databaseConnector.getConnection();
              Statement stmt = conn.createStatement()) {
@@ -42,16 +44,21 @@ public class MovieDAO_DB implements IMovieDAO {
                 LocalDate lastview = rs.getDate("Lastview").toLocalDate();
 
 
+                int days= (int) DAYS.between(lastview, LocalDate.now());
 
+                if (days>=730)
+                    toOld=true;
+                else
+                    toOld=false;
                 //  System.out.println(time);
 
 
-                Movie movie = new Movie(id, name, rating, filelink, lastview);
+                Movie movie = new Movie(id, name, rating, filelink, lastview, toOld);
 
 
                 allMovies.add(movie);
             }
-
+            System.out.println(allMovies);
                  return allMovies;
 
         } catch (SQLException ex) {
@@ -61,7 +68,7 @@ public class MovieDAO_DB implements IMovieDAO {
     }
 
     @Override
-    public Movie addMovie(String name, double rating, String fileLink, LocalDate lastview) throws Exception {
+    public Movie addMovie(String name, double rating, String fileLink) throws Exception {
         String sql = "INSERT INTO movie (name,rating, filelink, lastview) VALUES (?,?,?,?);";
 
         try (Connection conn = databaseConnector.getConnection()) {
@@ -71,7 +78,7 @@ public class MovieDAO_DB implements IMovieDAO {
             stmt.setString(1, name);
             stmt.setDouble(2, rating);
             stmt.setString(3, fileLink);
-            stmt.setDate(4, Date.valueOf(lastview));
+            stmt.setDate(4, Date.valueOf(LocalDate.now()));
 
 
             // Run the specified SQL statement
@@ -86,7 +93,7 @@ public class MovieDAO_DB implements IMovieDAO {
             }
 
             // Create Song object and send up the layers
-            Movie movie = new Movie(id, name, rating, fileLink, lastview);
+            Movie movie = new Movie(id, name, rating, fileLink, LocalDate.now(),false);
             System.out.println(movie);
             return movie;
         } catch (SQLException ex) {

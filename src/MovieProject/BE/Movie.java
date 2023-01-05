@@ -10,14 +10,23 @@ public class Movie {
     private String fileLink;
     private LocalDate lastview;
 
-    public Movie(int id, String name, double rating, String fileLink, LocalDate lastview) {
+    boolean toOld;
+    public Movie(int id, String name, double rating, String fileLink, LocalDate lastview, boolean toOld) {
         this.id = id;
         this.name = name;
         this.rating = rating;
         this.fileLink = fileLink;
         this.lastview = lastview;
+        this.toOld=toOld;
     }
 
+    public boolean getToOld() {
+        return toOld;
+    }
+
+    public void setId(boolean toOld) {
+        this.toOld = toOld;
+    }
     public int getId() {
         return id;
     }
@@ -65,7 +74,7 @@ public class Movie {
                 ", name='" + name + '\'' +
                 ", rating=" + rating +
                 ", fileLink='" + fileLink + '\'' +
-                ", lastview='" + lastview + '\'' +
+                ", toOld='" + toOld + '\'' +
                 '}';
     }
 }

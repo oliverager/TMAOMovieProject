@@ -23,8 +23,8 @@ public class MovieModel {
         return moviesToBeViewed;
     }
 
-    public void addMovie(String name, double rating, String fileLink, LocalDate lastview) throws Exception {
-        movieManager.addMovie(name, rating, fileLink, lastview);
+    public void addMovie(String name, double rating, String fileLink) throws Exception {
+        movieManager.addMovie(name, rating, fileLink);
     }
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieManager.deletedMovie(deletedMovie);
