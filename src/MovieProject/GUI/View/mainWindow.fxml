@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MovieProject.GUI.Controller.MainViewController">
@@ -20,10 +21,12 @@
             <TableColumn fx:id="ToOldTableColumn" prefWidth="112.800048828125" text="To old" />
         </columns>
       </TableView>
-      <TextArea fx:id="movieTextArea" layoutX="659.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="660.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <TextArea fx:id="movieTextArea" layoutX="659.0" layoutY="55.0" prefHeight="505.0" prefWidth="400.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="660.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="55.0" />
       <Button fx:id="categoriesAdd" layoutX="79.0" layoutY="560.0" mnemonicParsing="false" onAction="#handleNewCategory" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" />
       <Button fx:id="categoriesDelete" layoutX="69.0" layoutY="565.0" mnemonicParsing="false" onAction="#deleteCategoriesAction" text="Delete" AnchorPane.bottomAnchor="10.0" />
       <Button fx:id="movieAdd" layoutX="240.0" layoutY="565.0" mnemonicParsing="false" onAction="#handleNewMovie" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="240.0" />
       <Button fx:id="movieDelete" layoutX="286.0" layoutY="565.0" mnemonicParsing="false" onAction="#deleteMoviesAction" text="Delete" AnchorPane.bottomAnchor="10.0" />
+      <TextField fx:id="searchField" layoutX="660.0" layoutY="20.0" prefHeight="26.0" prefWidth="400.0" promptText="Search" />
+      <Button fx:id="updateRating" layoutX="348.0" layoutY="565.0" mnemonicParsing="false" onAction="#updateRatingsAction" text="Update Rating" />
    </children>
 </AnchorPane>

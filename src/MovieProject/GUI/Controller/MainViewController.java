@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
@@ -28,6 +29,8 @@ import java.nio.file.Path;
 import java.util.ResourceBundle;
 
 public class MainViewController extends BaseController implements Initializable {
+
+    public TextField searchField;
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
         @FXML
@@ -39,7 +42,7 @@ public class MainViewController extends BaseController implements Initializable 
     private TextArea movieTextArea;
 
     @FXML
-    private Button movieAdd,movieDelete,categoriesAdd,categoriesDelete;
+    private Button movieAdd,movieDelete,categoriesAdd,categoriesDelete,updateRating;
 
     private String errorText;;
     MovieModel movieModel;
@@ -233,5 +236,8 @@ public void playVideo(String videoPath) throws IOException {
 
 
 
+    }
+
+    public void updateRatingsAction(ActionEvent actionEvent) {
     }
 }
