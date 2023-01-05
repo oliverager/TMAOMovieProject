@@ -58,8 +58,8 @@ public class MovieDAO_DB implements IMovieDAO {
 
                 allMovies.add(movie);
             }
-            System.out.println(allMovies);
-                 return allMovies;
+
+            return allMovies;
 
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -20,6 +20,8 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,20 +34,15 @@ public class MainViewController extends BaseController implements Initializable 
     @FXML
     private TableView<Movie> MovieTableView;
 
-    public TextArea movieTextArea;
-    public Button categoriesAdd;
-    public Button categoriesDelete;
+    @FXML
+    private TextArea movieTextArea;
 
     @FXML
-    public Button movieAdd;
-
-
-    public Button movieDelete;
-
+    private Button movieAdd,movieDelete,categoriesAdd,categoriesDelete;
 
     MovieModel movieModel;
-
     CategoriesModel categoriesModel;
+
 
     public MainViewController() throws Exception {
 
@@ -60,6 +57,7 @@ public class MainViewController extends BaseController implements Initializable 
         setColoumsForCategories();
         keyPressListenerMovie();
         mouseListenerMovie(); //Jeg har ikke lagt ind for kategorier endnu, men nu kan se hvordan de virker.
+
     }
 
     public void setColoumsForMovies()
@@ -93,9 +91,6 @@ public class MainViewController extends BaseController implements Initializable 
             System.out.println("Hej igen");
         });
     }
-
-
-
 
 
     public void handleNewMovie(ActionEvent actionEvent) throws IOException {
@@ -136,4 +131,16 @@ public class MainViewController extends BaseController implements Initializable 
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
         stage.show();
     }
+
+public void playVideo(String videoPath) throws IOException {
+    //text file, should be opening in default text editor
+    File file = new File(videoPath);
+    Desktop desktop = Desktop.getDesktop();
+    if(file.exists()) desktop.open(file);
+
+}
+
+
+
+
 }
