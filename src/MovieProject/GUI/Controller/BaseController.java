@@ -13,6 +13,7 @@ public abstract class BaseController {
         public MovieModel getModel(){
             return model;
         }
+        
     public void setCategoriesModel(CategoriesModel categoriesModel) {
         this.categoriesModel = categoriesModel;
     }

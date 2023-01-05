@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BE/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BE/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BLL/MovieManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BLL/MovieManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/IMovieDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/IMovieDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/DatabaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/DatabaseConnector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/MovieDAO_DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/MovieDAO_DB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Model/MovieModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Model/MovieModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/NewMovie.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/NewMovie.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/NewCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/NewCategoryController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

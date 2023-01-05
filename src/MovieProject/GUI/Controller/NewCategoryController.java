@@ -16,7 +16,9 @@ public class NewCategoryController extends BaseController implements Initializab
 
     @FXML
     private Button cancelCategory;
+    @FXML
     private Button saveCategory;
+    @FXML
     private TextField categoryTextField;
 
     @Override
