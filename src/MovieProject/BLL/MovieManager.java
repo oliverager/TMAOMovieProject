@@ -23,4 +23,11 @@ public class MovieManager {
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieDAO.deletedMovie(deletedMovie);
     }
-}
+
+        public void updateMovie(Movie updateMovie) throws Exception
+        {
+            movieDAO.updateMovie(updateMovie);
+        }
+
+
+    }

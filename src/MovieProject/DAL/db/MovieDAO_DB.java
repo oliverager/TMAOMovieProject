@@ -135,5 +135,29 @@ public class MovieDAO_DB implements IMovieDAO {
 
     }
 
+    @Override
+    public void updateMovie(Movie movie) throws Exception {
+
+        String sql = "UPDATE movie SET  Lastview=? WHERE ID = ?";
+
+        try (Connection conn = databaseConnector.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            // Bind parameters
+            stmt.setDate(1, Date.valueOf(LocalDate.now()));
+           stmt.setInt(2, movie.getId());
+
+
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("Could not update song", ex);
+        }
+    }
+
+
+
+
 }
 

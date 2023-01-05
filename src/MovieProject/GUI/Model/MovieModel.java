@@ -29,4 +29,11 @@ public class MovieModel {
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieManager.deletedMovie(deletedMovie);
     }
-}
+        public void updateMovie(Movie updateMovie) throws Exception
+        {
+            movieManager.updateMovie(updateMovie);
+        }
+
+
+
+    }
