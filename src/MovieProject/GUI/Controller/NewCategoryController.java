@@ -35,14 +35,14 @@ public class NewCategoryController extends BaseController implements Initializab
     }
 
     public void handleSaveCategory(ActionEvent actionEvent) throws Exception{
-        /*try {
-            CategoriesModel.addCategories(categoryTextField.getText());
+        try {
+            categoriesModel.addCategories(categoryTextField.getText());
 
             Stage stage = (Stage) saveCategory.getScene().getWindow();
             stage.close();
 
         } catch (IOException ex) {
             ex.printStackTrace();
-        }*/
+        }
     }
 }
