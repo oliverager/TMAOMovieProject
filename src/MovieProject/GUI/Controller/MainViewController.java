@@ -241,14 +241,6 @@ public void playVideo(String videoPath) throws IOException {
     public void updateRatingsAction(ActionEvent actionEvent) {
     }
 
-    public void searchMovie() {
-        if (searchField.getText() != null) {
-            String search = searchField.getText().toLowerCase();
-            MovieTableView.setItems(movieModel.searchedMovie(search));
-        }
-    }
-
-
     public void handleSearch(ActionEvent actionEvent) {
         if (searchButton.getText().equals("Search")) {
             if (searchField.getText() != null) {

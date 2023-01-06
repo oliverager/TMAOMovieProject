@@ -30,6 +30,7 @@ public class MovieModel {
         }
         return searchedMovie;
     }
+    
     public void addMovie(String name, double rating, String fileLink) throws Exception {
         movieManager.addMovie(name, rating, fileLink);
     }
