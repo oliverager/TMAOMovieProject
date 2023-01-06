@@ -217,7 +217,7 @@ public void playVideo(String videoPath) throws IOException {
 
 }
 
-    private void informationUser(String information){
+    public void informationUser(String information){
         Alert info = new Alert(Alert.AlertType.INFORMATION);
         info.setTitle("Regarding movie");
         info.setHeaderText(information + "");

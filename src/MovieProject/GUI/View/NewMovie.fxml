@@ -34,7 +34,7 @@
       <TextField fx:id="txtUserRating" layoutX="156.0" layoutY="186.0" prefHeight="26.0" prefWidth="82.0" />
       <TextField fx:id="txtImdbRating" layoutX="45.0" layoutY="186.0" prefHeight="26.0" prefWidth="82.0" />
       <TextField fx:id="txtFilePath" layoutX="45.0" layoutY="262.0" prefHeight="26.0" prefWidth="194.0" />
-      <Button fx:id="btnChooseFile" layoutX="101.0" layoutY="296.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Choose File" />
+      <Button fx:id="btnChooseFile" layoutX="101.0" layoutY="296.0" mnemonicParsing="false" onAction="#handleChooseFile" prefHeight="26.0" prefWidth="82.0" text="Choose File" />
       <Button fx:id="addMovie" layoutX="23.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleAddMovie" text="Add Movie" />
       <Button fx:id="cancelMovie" layoutX="523.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleCancelMovie" text="Cancel" />
       <TableView fx:id="lstCategories" layoutX="427.0" layoutY="79.0" prefHeight="220.0" prefWidth="159.0">

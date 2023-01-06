@@ -1,6 +1,8 @@
 package MovieProject.GUI.Controller;
 
 import MovieProject.BE.Categories;
+
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 //import MovieProject.GUI.Model;
@@ -20,7 +22,8 @@ import java.util.ResourceBundle;
 
 public class NewMovieController extends BaseController implements Initializable {
 
-
+    private MovieModel movieModel;
+    private MainViewController mainController;
     private CategoriesModel categoriesModel;
 
 
@@ -68,6 +71,7 @@ public class NewMovieController extends BaseController implements Initializable 
     public void initialize(URL location, ResourceBundle resources) {
         try {
             categoriesModel = new CategoriesModel();
+            movieModel = new MovieModel();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -75,9 +79,7 @@ public class NewMovieController extends BaseController implements Initializable 
         tableCategory.setCellValueFactory(new PropertyValueFactory<>("Categories"));
         lstCategories.setItems(categoriesModel.getCategoriesToBeViewed());
 
-
-
-
+        tableSelectedCategory.setCellValueFactory(new PropertyValueFactory<>("Categories"));
 
     }
 
@@ -88,6 +90,19 @@ public class NewMovieController extends BaseController implements Initializable 
 
 
     public void handleAddMovie(ActionEvent actionEvent) {
+        String title = txtMovieTitle.getText();
+        Double userRating = Double.parseDouble(txtUserRating.getText());
+        Double imdbRating = Double.parseDouble(txtImdbRating.getText());
+        String fPath = txtFilePath.getText();
+
+        Stage stage = (Stage) addMovie.getScene().getWindow();
+        stage.close();
+
+        try { movieModel.addMovie(title, userRating, imdbRating, fPath);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void handleCancelMovie(ActionEvent actionEvent) {
@@ -95,21 +110,34 @@ public class NewMovieController extends BaseController implements Initializable 
         stage.close();
     }
 
-    public void handleChooseFIle(ActionEvent actionEvent) { //Starter et søgevindue til filer. Den kan du bruge.
-        String fileName;
-        Stage stage = new Stage();
-        FileChooser fc = new FileChooser();
-        File file = fc.showOpenDialog(stage);
-        if (file != null) {
-
-            fileName = file.toURI().toString();
-            fileName = fileName.substring(6);
-            String newFile = fileName;
-            fileName = newFile.replace("%20", " ");
-            txtFilePath.setText(fileName);
+    public void handleChooseFile(ActionEvent actionEvent) {
+        try {
+            mainController = new MainViewController();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+
+        FileChooser fc = new FileChooser();
+        Stage fileStage = (Stage) cancelMovie.getScene().getWindow();
+        File f = fc.showOpenDialog(fileStage);
+        if (f.getPath().endsWith(".mp4") || f.getPath().endsWith("mpeg4")) {
+            txtFilePath.setText(f.getPath());
+        }
+        else{
+            mainController.informationUser("Your file needs to be in mp4 or mpeg4 format");
+        }
+
+
+
+
+
+
+
     }
 
     public void handleSelectCategory(ActionEvent actionEvent) {
+        Categories selectedCategory = lstCategories.getSelectionModel().getSelectedItem();
+        lstSelectedCategory.getItems().add(selectedCategory);
+
     }
 }
