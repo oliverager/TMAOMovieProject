@@ -6,25 +6,36 @@ public class Movie {
 
     private int id;
     private String name;
-    private double rating;
+    private double rating,imdb;
     private String fileLink;
     private LocalDate lastview;
 
     boolean toOld;
-    public Movie(int id, String name, double rating, String fileLink, LocalDate lastview, boolean toOld) {
+    public Movie(int id, String name, double rating,double imdb,String fileLink, LocalDate lastview, boolean toOld) {
         this.id = id;
         this.name = name;
         this.rating = rating;
+        this.imdb=imdb;
         this.fileLink = fileLink;
         this.lastview = lastview;
         this.toOld=toOld;
+
     }
+
+    public double getImdb() {
+        return imdb;
+    }
+
+    public void setImdb(double imdb) {
+        this.imdb = imdb;
+    }
+
 
     public boolean getToOld() {
         return toOld;
     }
 
-    public void setId(boolean toOld) {
+    public void setToOld(boolean toOld) {
         this.toOld = toOld;
     }
     public int getId() {
@@ -70,10 +81,9 @@ public class Movie {
     @Override
     public String toString() {
         return "Movie{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", rating=" + rating +
-                ", fileLink='" + fileLink + '\'' +
+                ", imdb=" + imdb +
                 ", toOld='" + toOld + '\'' +
                 '}';
     }

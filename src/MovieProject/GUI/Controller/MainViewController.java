@@ -31,7 +31,11 @@ import java.util.ResourceBundle;
 public class MainViewController extends BaseController implements Initializable {
 
     public TextField searchField;
+<<<<<<< Updated upstream
     public Button searchButton;
+=======
+    public TableColumn IMDBTableColumn;
+>>>>>>> Stashed changes
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
         @FXML
@@ -76,9 +80,10 @@ public class MainViewController extends BaseController implements Initializable 
 
         public void setColoumsForMovies()
     {
-       NameTableColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        NameTableColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         RatingTableColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
-        ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("toOld"));
+        IMDBTableColumn.setCellValueFactory(new PropertyValueFactory<>("imdb"));
+        ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("ToOld"));
         MovieTableView.setItems(movieModel.getObservableMovies());
     }
 

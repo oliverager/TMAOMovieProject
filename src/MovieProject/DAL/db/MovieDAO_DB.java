@@ -40,6 +40,7 @@ public class MovieDAO_DB implements IMovieDAO {
                 int id = rs.getInt("Id");
                 String name = rs.getString("Name");
                 double rating = rs.getDouble("Rating");
+                double imdb = rs.getDouble("imdb");
                 String filelink = rs.getString("Filelink");
                 LocalDate lastview = rs.getDate("Lastview").toLocalDate();
 
@@ -53,10 +54,11 @@ public class MovieDAO_DB implements IMovieDAO {
                 //  System.out.println(time);
 
 
-                Movie movie = new Movie(id, name, rating, filelink, lastview, toOld);
+
+               Movie movie = new Movie(id, name, rating, imdb, filelink, lastview, toOld);
 
 
-                allMovies.add(movie);
+               allMovies.add(movie);
             }
 
             return allMovies;
@@ -68,8 +70,8 @@ public class MovieDAO_DB implements IMovieDAO {
     }
 
     @Override
-    public Movie addMovie(String name, double rating, String fileLink) throws Exception {
-        String sql = "INSERT INTO movie (name,rating, filelink, lastview) VALUES (?,?,?,?);";
+    public Movie addMovie(String name, double rating, double imdb, String fileLink) throws Exception {
+        String sql = "INSERT INTO movie (name,rating, imdb, filelink, lastview) VALUES (?,?,?,?,?);";
 
         try (Connection conn = databaseConnector.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -77,8 +79,9 @@ public class MovieDAO_DB implements IMovieDAO {
             // Bind parameters
             stmt.setString(1, name);
             stmt.setDouble(2, rating);
-            stmt.setString(3, fileLink);
-            stmt.setDate(4, Date.valueOf(LocalDate.now()));
+            stmt.setDouble(3, imdb);
+            stmt.setString(4, fileLink);
+            stmt.setDate(5, Date.valueOf(LocalDate.now()));
 
 
             // Run the specified SQL statement
@@ -93,7 +96,7 @@ public class MovieDAO_DB implements IMovieDAO {
             }
 
             // Create Song object and send up the layers
-            Movie movie = new Movie(id, name, rating, fileLink, LocalDate.now(),false);
+            Movie movie = new Movie(id, name, rating, imdb,fileLink, LocalDate.now(),false);
             System.out.println(movie);
             return movie;
         } catch (SQLException ex) {

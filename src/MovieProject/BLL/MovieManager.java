@@ -16,9 +16,9 @@ public class MovieManager {
     public List<Movie> getAllMovies() throws Exception {
         return movieDAO.getAllMovies();
     }
-    public Movie addMovie(String name, double rating, String fileLink ) throws Exception {
+    public Movie addMovie(String name, double rating, double imdb,String fileLink ) throws Exception {
 
-        return movieDAO.addMovie(name, rating,fileLink);
+        return movieDAO.addMovie(name, rating,imdb,fileLink);
     }
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieDAO.deletedMovie(deletedMovie);

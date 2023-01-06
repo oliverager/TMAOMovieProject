@@ -40,7 +40,7 @@ public class DatabaseConnector {
 
 
             movieDAODb.getAllMovies();
-          //  movieDAODb.addMovie("Gurli gris2",1.2,"sss");
+         //  movieDAODb.addMovie("Gurli gris2",1.2,2.3,"sss");
 
 
         } //Connection gets closed here

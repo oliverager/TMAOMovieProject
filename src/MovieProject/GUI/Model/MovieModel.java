@@ -21,6 +21,7 @@ public class MovieModel {
         return moviesToBeViewed;
     }
 
+<<<<<<< Updated upstream
     public ObservableList<Movie> searchedMovie(String search) {
         ObservableList<Movie> searchedMovie = FXCollections.observableArrayList();
         for (Movie movie : moviesToBeViewed) {
@@ -33,6 +34,10 @@ public class MovieModel {
     
     public void addMovie(String name, double rating, String fileLink) throws Exception {
         movieManager.addMovie(name, rating, fileLink);
+=======
+    public void addMovie(String name, double rating, double imdb,String fileLink) throws Exception {
+        movieManager.addMovie(name, rating, imdb,fileLink);
+>>>>>>> Stashed changes
     }
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieManager.deletedMovie(deletedMovie);
