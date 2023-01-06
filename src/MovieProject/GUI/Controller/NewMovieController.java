@@ -1,6 +1,7 @@
 package MovieProject.GUI.Controller;
 
 import MovieProject.BE.Categories;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 //import MovieProject.GUI.Model;
 import MovieProject.GUI.Model.CategoriesModel;
@@ -8,9 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import MovieProject.GUI.Model.MovieModel;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -20,33 +20,65 @@ import java.util.ResourceBundle;
 
 public class NewMovieController extends BaseController implements Initializable {
 
+
+    private CategoriesModel categoriesModel;
+
+
+    private ObservableList<Categories> getCategoriesToBeViewed;
     @FXML
     private Button addMovie;
+
+    @FXML
+    private Button btnChooseFile;
+
+    @FXML
+    private Button btnSelectCategory;
 
     @FXML
     private Button cancelMovie;
 
     @FXML
-    private ListView<?> lstCategory;
+    private TableView<Categories> lstCategories;
 
-    private ObservableList<Categories> getCategoriesToBeViewed;
+    @FXML
+    private TableView<Categories> lstSelectedCategory;
+
+    @FXML
+    private TableColumn<Categories, String> tableCategory;
+
+    @FXML
+    private TableColumn<Categories, String> tableSelectedCategory;
 
     @FXML
     private TextField txtFilePath;
 
     @FXML
+    private TextField txtImdbRating;
+
+    @FXML
     private TextField txtMovieTitle;
 
     @FXML
-    private TextField txtURating;
+    private TextField txtUserRating;
 
 
-    private MovieModel movieModel;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            categoriesModel = new CategoriesModel();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-        //lstCategory.setItems;
+        tableCategory.setCellValueFactory(new PropertyValueFactory<>("Categories"));
+        lstCategories.setItems(categoriesModel.getCategoriesToBeViewed());
+
+
+
+
+
     }
 
 
@@ -76,5 +108,8 @@ public class NewMovieController extends BaseController implements Initializable 
             fileName = newFile.replace("%20", " ");
             txtFilePath.setText(fileName);
         }
+    }
+
+    public void handleSelectCategory(ActionEvent actionEvent) {
     }
 }
