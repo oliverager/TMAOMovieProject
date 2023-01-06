@@ -32,6 +32,16 @@ public class MovieModel {
         return searchedMovie;
     }
 
+    public void showList() throws Exception {
+        //Update the listview
+        moviesToBeViewed.clear();
+        moviesToBeViewed.addAll(movieManager.getAllMovies());
+    }
+
+
+
+
+
 
     public void addMovie(String name, double rating, double imdb,String fileLink) throws Exception {
         movieManager.addMovie(name, rating, imdb,fileLink);

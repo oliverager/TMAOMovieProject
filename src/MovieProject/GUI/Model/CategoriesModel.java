@@ -25,4 +25,14 @@ public class CategoriesModel {
     public void deletedCategories(Categories deletedCategories) throws Exception{
         categoriesManager.deletedCategories(deletedCategories);
     }
+
+    public void showList() throws Exception {
+        //Update the listview
+        categoriesToBeViewed.clear();
+        categoriesToBeViewed.addAll(categoriesManager.getAllCategories());
+    }
+
+
+
+
 }
