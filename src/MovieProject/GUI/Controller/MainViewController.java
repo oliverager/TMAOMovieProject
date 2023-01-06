@@ -31,11 +31,10 @@ import java.util.ResourceBundle;
 public class MainViewController extends BaseController implements Initializable {
 
     public TextField searchField;
-<<<<<<< Updated upstream
+
     public Button searchButton;
-=======
+
     public TableColumn IMDBTableColumn;
->>>>>>> Stashed changes
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
         @FXML
@@ -220,7 +219,7 @@ public void playVideo(String videoPath) throws IOException {
 
     private void informationUser(String information){
         Alert info = new Alert(Alert.AlertType.INFORMATION);
-        info.setTitle("Regarding music");
+        info.setTitle("Regarding movie");
         info.setHeaderText(information + "");
         info.showAndWait();
     }

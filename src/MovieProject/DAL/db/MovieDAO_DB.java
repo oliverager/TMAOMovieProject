@@ -47,7 +47,7 @@ public class MovieDAO_DB implements IMovieDAO {
 
                 int days= (int) DAYS.between(lastview, LocalDate.now());
 
-                if (days>=730)
+                if (days>=730 && rating<6 )
                     toOld=true;
                 else
                     toOld=false;
@@ -139,7 +139,7 @@ public class MovieDAO_DB implements IMovieDAO {
     }
 
     @Override
-    public void updateMovie(Movie movie) throws Exception {
+    public void updateMovieLastview(Movie movie) throws Exception {
 
         String sql = "UPDATE movie SET  Lastview=? WHERE ID = ?";
 
@@ -160,7 +160,25 @@ public class MovieDAO_DB implements IMovieDAO {
     }
 
 
+    public void updateMovieRating(Movie movie, double rating) throws Exception {
 
+        String sql = "UPDATE movie SET  Rating=? WHERE ID = ?";
+
+        try (Connection conn = databaseConnector.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            // Bind parameters
+            stmt.setDouble(1,rating );
+            stmt.setInt(2, movie.getId());
+
+
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("Could not update song", ex);
+        }
+    }
 
 }
 

@@ -24,10 +24,16 @@ public class MovieManager {
         movieDAO.deletedMovie(deletedMovie);
     }
 
-        public void updateMovie(Movie updateMovie) throws Exception
+        public void updateMovieLastview(Movie updateMovieLastview) throws Exception
         {
-            movieDAO.updateMovie(updateMovie);
+            movieDAO.updateMovieLastview(updateMovieLastview);
         }
+
+    public void updateMovieRating(Movie movie, double rating) throws Exception
+    {
+        movieDAO.updateMovieRating(movie,rating);
+    }
+
 
 
     }
