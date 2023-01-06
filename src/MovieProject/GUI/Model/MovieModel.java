@@ -32,10 +32,11 @@ public class MovieModel {
         return searchedMovie;
     }
 
-    public void showList() throws Exception {
+    public ObservableList<Movie> showList() throws Exception {
         //Update the listview
         moviesToBeViewed.clear();
         moviesToBeViewed.addAll(movieManager.getAllMovies());
+        return moviesToBeViewed;
     }
 
 

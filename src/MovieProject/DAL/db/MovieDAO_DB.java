@@ -51,7 +51,7 @@ public class MovieDAO_DB implements IMovieDAO {
                     toOld=true;
                 else
                     toOld=false;
-                //  System.out.println(time);
+
 
 
 
@@ -97,7 +97,7 @@ public class MovieDAO_DB implements IMovieDAO {
 
             // Create Song object and send up the layers
             Movie movie = new Movie(id, name, rating, imdb,fileLink, LocalDate.now(),false);
-            System.out.println(movie);
+            
             return movie;
         } catch (SQLException ex) {
             ex.printStackTrace();

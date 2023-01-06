@@ -117,12 +117,18 @@ public class MainViewController extends BaseController implements Initializable 
     {
         MovieTableView.setOnMouseClicked(event -> {
 
-            if (event.getClickCount() == 2)
-            System.out.println("Hej igen");
+            if (event.getClickCount() == 2) {
+                System.out.println();
+            }
 
 
         });
     }
+
+
+
+
+
 
     public void mouseListenerCategories()
     {
@@ -160,7 +166,7 @@ public class MainViewController extends BaseController implements Initializable 
         });
     }
 
-    public void handleNewMovie(ActionEvent actionEvent) throws IOException {
+    public void handleNewMovie(ActionEvent actionEvent) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MovieProject/GUI/View/NewMovie.fxml"));
         Parent root = loader.load();
@@ -170,14 +176,23 @@ public class MainViewController extends BaseController implements Initializable 
         controller.setModel(movieModel);
         controller.setup();
 
-        stage.setScene(new Scene(root));
+
         stage.setTitle("New Window");
         stage.initModality(Modality.NONE);
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-        stage.show();
+        //stage.show();
+        movieModel.showList();
 
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+        MovieTableView.setItems(movieModel.showList());
 
     }
+
+
+
+
+
 
 
     @Override

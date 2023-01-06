@@ -89,14 +89,19 @@ public class NewMovieController extends BaseController implements Initializable 
     }
 
 
-    public void handleAddMovie(ActionEvent actionEvent) {
+    public void handleAddMovie(ActionEvent actionEvent) throws Exception {
         String title = txtMovieTitle.getText();
         Double userRating = Double.parseDouble(txtUserRating.getText());
         Double imdbRating = Double.parseDouble(txtImdbRating.getText());
         String fPath = txtFilePath.getText();
 
+
+
         Stage stage = (Stage) addMovie.getScene().getWindow();
         stage.close();
+
+
+
 
         try { movieModel.addMovie(title, userRating, imdbRating, fPath);
 
