@@ -98,10 +98,16 @@ public class NewMovieController extends BaseController implements Initializable 
         Stage stage = (Stage) addMovie.getScene().getWindow();
         stage.close();
 
-        try { movieModel.addMovie(title, userRating, imdbRating, fPath);
+        if (userRating.doubleValue() > 0 && userRating.doubleValue() < 11 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() < 11) {
+            try {
+                movieModel.addMovie(title, userRating, imdbRating, fPath);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            mainController.informationUser("Your rating value needs to be between 1-10");
         }
     }
 
