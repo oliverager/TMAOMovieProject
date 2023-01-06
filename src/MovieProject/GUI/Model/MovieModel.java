@@ -8,8 +8,6 @@ import javafx.collections.ObservableList;
 // Project imports
 import MovieProject.BE.Movie;
 
-import java.time.LocalDate;
-
 public class MovieModel {
     private ObservableList<Movie> moviesToBeViewed;
     private MovieManager movieManager;
@@ -20,10 +18,18 @@ public class MovieModel {
         moviesToBeViewed.addAll(movieManager.getAllMovies());
     }
     public ObservableList<Movie> getObservableMovies(){
-
         return moviesToBeViewed;
     }
 
+    public ObservableList<Movie> searchedMovie(String search) {
+        ObservableList<Movie> searchedMovie = FXCollections.observableArrayList();
+        for (Movie movie : moviesToBeViewed) {
+            if (movie.getName().toLowerCase().contains(search)) {
+                searchedMovie.add(movie);
+            }
+        }
+        return searchedMovie;
+    }
     public void addMovie(String name, double rating, String fileLink) throws Exception {
         movieManager.addMovie(name, rating, fileLink);
     }

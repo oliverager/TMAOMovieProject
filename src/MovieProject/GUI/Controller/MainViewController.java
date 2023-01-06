@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
 public class MainViewController extends BaseController implements Initializable {
 
     public TextField searchField;
+    public Button searchButton;
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
         @FXML
@@ -47,7 +48,6 @@ public class MainViewController extends BaseController implements Initializable 
     private String errorText;;
     MovieModel movieModel;
     CategoriesModel categoriesModel;
-
 
 
     public MainViewController()  {
@@ -239,5 +239,27 @@ public void playVideo(String videoPath) throws IOException {
     }
 
     public void updateRatingsAction(ActionEvent actionEvent) {
+    }
+
+    public void searchMovie() {
+        if (searchField.getText() != null) {
+            String search = searchField.getText().toLowerCase();
+            MovieTableView.setItems(movieModel.searchedMovie(search));
+        }
+    }
+
+
+    public void handleSearch(ActionEvent actionEvent) {
+        if (searchButton.getText().equals("Search")) {
+            if (searchField.getText() != null) {
+                String search = searchField.getText().toLowerCase();
+                MovieTableView.setItems(movieModel.searchedMovie(search));
+            }
+            searchButton.setText("Clear");
+        } else if (searchButton.getText().equals("Clear")) {
+            searchField.clear();
+            MovieTableView.setItems(movieModel.getObservableMovies());
+            searchButton.setText("Search");
+        }
     }
 }
