@@ -2,7 +2,6 @@ package MovieProject.GUI.Controller;
 
 import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
-import MovieProject.BLL.CatMovieManager;
 import MovieProject.GUI.Model.CatMovieModel;
 import MovieProject.GUI.Model.CategoriesModel;
 import MovieProject.GUI.Model.MovieModel;
@@ -21,7 +20,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import jdk.jfr.Category;
 
 import java.awt.*;
 import java.io.File;
@@ -58,6 +56,7 @@ public class MainViewController extends BaseController implements Initializable 
     CatMovieModel catMovieModel;
 
     Categories category;
+    Movie movie;
 
 
     public MainViewController()  {
@@ -126,7 +125,18 @@ public class MainViewController extends BaseController implements Initializable 
         MovieTableView.setOnMouseClicked(event -> {
 
             if (event.getClickCount() == 2) {
-                System.out.println();
+                {
+
+                    movie=MovieTableView.getSelectionModel().getSelectedItem();
+                    String moviePath=movie.getFileLink();
+
+                    try {
+                        playVideo(moviePath);
+                    } catch (IOException e) {
+                        displayError(e);
+                    }
+                }
+
             }
 
 
@@ -240,13 +250,13 @@ public class MainViewController extends BaseController implements Initializable 
         stage.show();
     }
 
-public void playVideo(String videoPath) throws IOException {
+public void playVideo(String moviePath) throws IOException {
 
-    boolean filesExits= Files.exists(Path.of(videoPath)); //check om filen eksisterer
+    boolean filesExits= Files.exists(Path.of(moviePath)); //check om filen eksisterer
 
     if (filesExits)
     {
-        File file = new File(videoPath);
+        File file = new File(moviePath);
         Desktop desktop = Desktop.getDesktop();
         if(file.exists()) desktop.open(file);
 
