@@ -2,6 +2,8 @@ package MovieProject.GUI.Controller;
 
 import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
+import MovieProject.BLL.CatMovieManager;
+import MovieProject.GUI.Model.CatMovieModel;
 import MovieProject.GUI.Model.CategoriesModel;
 import MovieProject.GUI.Model.MovieModel;
 import javafx.event.ActionEvent;
@@ -19,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import jdk.jfr.Category;
 
 import java.awt.*;
 import java.io.File;
@@ -52,12 +55,17 @@ public class MainViewController extends BaseController implements Initializable 
     MovieModel movieModel;
     CategoriesModel categoriesModel;
 
+    CatMovieModel catMovieModel;
+
+    Categories category;
+
 
     public MainViewController()  {
 
         try {
             movieModel = new MovieModel();
             categoriesModel=new CategoriesModel();
+            catMovieModel = new CatMovieModel();
         } catch (Exception e) {
             displayError(e);
         }
@@ -74,7 +82,7 @@ public class MainViewController extends BaseController implements Initializable 
         mouseListenerMovie();
         listenerMovieList();
         mouseListenerCategories();
-        listenerCategorieList();
+        listenerCategoryList();
     }
 
         public void setColoumsForMovies()
@@ -83,7 +91,7 @@ public class MainViewController extends BaseController implements Initializable 
         RatingTableColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
         IMDBTableColumn.setCellValueFactory(new PropertyValueFactory<>("imdb"));
         ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("ToOld"));
-        MovieTableView.setItems(movieModel.getObservableMovies());
+        MovieTableView.setItems(catMovieModel.getObservableMovies());
     }
 
 
@@ -135,7 +143,7 @@ public class MainViewController extends BaseController implements Initializable 
         categoriesTableView.setOnMouseClicked(event -> {
 
             if (event.getClickCount() == 2)
-                System.out.println("Hej igen");
+                selectMovieFromCategory();
 
 
         });
@@ -155,7 +163,7 @@ public class MainViewController extends BaseController implements Initializable 
     }
 
 
-    public void listenerCategorieList()
+    public void listenerCategoryList()
     {
 
         categoriesTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
@@ -165,6 +173,30 @@ public class MainViewController extends BaseController implements Initializable 
             categoriesDelete.setDisable(false);
         });
     }
+
+
+    public void selectMovieFromCategory()
+    {
+        category=categoriesTableView.getSelectionModel().getSelectedItem();
+        int number=category.getId();
+        try {
+            catMovieModel.showList(number);
+        } catch (Exception e) {
+            displayError(e);
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     public void handleNewMovie(ActionEvent actionEvent) throws Exception {
 

@@ -29,9 +29,7 @@ public class CatMovieDAO_DB {
         try (Connection conn = databaseConnector.getConnection();
              Statement stmt = conn.createStatement()) {
 
-            String sql = "SELECT *" +
-                    "FROM PlaylistInfo PI, [PlaylistAndSongs] P, Song S " +
-                    "WHERE S.Id = P.MusicID and PI.PlaylisteID = P.PlaylisteID and P.PlaylisteID=" + categorieId + ";";
+            String sql = "SELECT * FROM Movie M,CatMovie CM, Category C  WHERE M.Id = CM.MOvieId and C.Id = CM.CategoryId and CM.CategoryId=" + categorieId + ";";
 
             //sql koden henter fra vores tre tabeller, hvor movie id i krydstabellen og movie skal være ens
             // og kategorie nummer skal være ens i kategorie og i krydstabellen.
@@ -44,7 +42,7 @@ public class CatMovieDAO_DB {
 
                 //Map DB row to Song object
                 int id = rs.getInt("Id");
-                String name = rs.getString("name");
+                String name = rs.getString("Name");
                 int rating = rs.getInt("rating");
                 int imdb = rs.getInt("imdb");
                 String filelink = rs.getString("filelink");
