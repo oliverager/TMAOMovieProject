@@ -96,30 +96,27 @@ public class NewMovieController extends BaseController implements Initializable 
         String fPath = txtFilePath.getText();
 
 
-
         Stage stage = (Stage) addMovie.getScene().getWindow();
         stage.close();
 
-<<<<<<< HEAD
 
+        try {
+            movieModel.addMovie(title, userRating, imdbRating, fPath);
 
+            if (userRating.doubleValue() > 0 && userRating.doubleValue() < 11 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() < 11) {
+                try {
+                    movieModel.addMovie(title, userRating, imdbRating, fPath);
 
-        try { movieModel.addMovie(title, userRating, imdbRating, fPath);
-=======
-        if (userRating.doubleValue() > 0 && userRating.doubleValue() < 11 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() < 11) {
-            try {
-                movieModel.addMovie(title, userRating, imdbRating, fPath);
->>>>>>> b2d0d2b301afb428e36dd5186af6d5c3801ba34f
-
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                mainController.informationUser("Your rating value needs to be between 1-10");
             }
-        }
-        else{
-            mainController.informationUser("Your rating value needs to be between 1-10");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
-
     public void handleCancelMovie(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelMovie.getScene().getWindow();
         stage.close();

@@ -176,22 +176,14 @@ public class MainViewController extends BaseController implements Initializable 
         controller.setModel(movieModel);
         controller.setup();
 
-
+        stage.setScene(new Scene(root));
         stage.setTitle("New Window");
         stage.initModality(Modality.NONE);
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-        //stage.show();
+        stage.show();
         movieModel.showList();
 
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
-        MovieTableView.setItems(movieModel.showList());
-
     }
-
-
-
-
 
 
 
