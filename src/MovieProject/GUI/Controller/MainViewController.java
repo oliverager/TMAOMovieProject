@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainViewController extends BaseController implements Initializable {
@@ -90,7 +91,7 @@ public class MainViewController extends BaseController implements Initializable 
         RatingTableColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
         IMDBTableColumn.setCellValueFactory(new PropertyValueFactory<>("imdb"));
         ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("ToOld"));
-        MovieTableView.setItems(catMovieModel.getObservableMovies());
+        MovieTableView.setItems(movieModel.getObservableMovies());
     }
 
 
@@ -283,14 +284,22 @@ public void playVideo(String moviePath) throws IOException {
     }
 
 
-    public void deleteCategoriesAction(ActionEvent actionEvent) {
+    public void deleteCategoriesAction(ActionEvent actionEvent) throws Exception{
     }
 
-    public void deleteMoviesAction(ActionEvent actionEvent) {
+    public void deleteMoviesAction(ActionEvent actionEvent) throws Exception{
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("You are about to delete a Movie");
+        alert.setContentText("Are you sure you want to delete?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            Movie deletedMovie = MovieTableView.getSelectionModel().getSelectedItem();
+            movieModel.deletedMovie(deletedMovie);
+        } else {
 
-
-
-
+        }
+        MovieTableView.setItems(movieModel.showList());
     }
 
     public void updateRatingsAction(ActionEvent actionEvent) {

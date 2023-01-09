@@ -26,10 +26,11 @@ public class CategoriesModel {
         categoriesManager.deletedCategories(deletedCategories);
     }
 
-    public void showList() throws Exception {
+    public ObservableList<Categories> showList() throws Exception {
         //Update the listview
         categoriesToBeViewed.clear();
         categoriesToBeViewed.addAll(categoriesManager.getAllCategories());
+        return categoriesToBeViewed;
     }
 
 
