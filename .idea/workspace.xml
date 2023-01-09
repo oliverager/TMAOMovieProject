@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories" />
+=======
     <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BE/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BE/Movie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BLL/MovieManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BLL/MovieManager.class" afterDir="false" />
@@ -14,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/NewMovie.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/NewMovie.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/mainWindow.fxml" afterDir="false" />
     </list>
+>>>>>>> d8a1ab012e684addc478c136d5f9cef5bcd9c7b5
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,6 +105,7 @@
       <workItem from="1672836203092" duration="48000" />
       <workItem from="1672836322725" duration="3000" />
       <workItem from="1672990959729" duration="4806000" />
+      <workItem from="1673251448894" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1672736843025</created>

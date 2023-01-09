@@ -37,6 +37,7 @@ public class MainViewController extends BaseController implements Initializable 
     public Button searchButton;
 
     public TableColumn IMDBTableColumn;
+
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
         @FXML
@@ -91,7 +92,8 @@ public class MainViewController extends BaseController implements Initializable 
         RatingTableColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
         IMDBTableColumn.setCellValueFactory(new PropertyValueFactory<>("imdb"));
         ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("ToOld"));
-        MovieTableView.setItems(movieModel.getObservableMovies());
+       // MovieTableView.setItems(catMovieModel.getObservableMovies());
+         MovieTableView.setItems(movieModel.getObservableMovies());
     }
 
 
@@ -223,8 +225,8 @@ public class MainViewController extends BaseController implements Initializable 
         stage.setTitle("New Window");
         stage.initModality(Modality.NONE);
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-        stage.show();
-        movieModel.showList();
+        stage.showAndWait();
+        MovieTableView.setItems(movieModel.showList());
 
     }
 
@@ -284,7 +286,17 @@ public void playVideo(String moviePath) throws IOException {
     }
 
 
-    public void deleteCategoriesAction(ActionEvent actionEvent) throws Exception{
+
+    //Actionevent for when you press the delete button under category table.
+    public void deleteCategoriesAction(ActionEvent actionEvent) throws Exception {
+        //Tries to execute the method below, if that's not possible we get an exception thrown.
+        try {
+            confirmationAlertCategory();
+
+        } catch (Exception exc) {
+            exc.printStackTrace();
+            throw new Exception("Could not delete Category", exc);
+        }
     }
 
     public void deleteMoviesAction(ActionEvent actionEvent) throws Exception{
@@ -316,6 +328,24 @@ public void playVideo(String moviePath) throws IOException {
             searchField.clear();
             MovieTableView.setItems(movieModel.getObservableMovies());
             searchButton.setText("Search");
+        }
+    }
+
+    //Makes a popup alert window that asks for confirmation that you want to delete the category.
+    public void confirmationAlertCategory() throws Exception {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("You are about to delete a Category");
+        alert.setContentText("Are you sure you want to delete?");
+        Optional<ButtonType> result = alert.showAndWait();
+        //If you press the OK button it takes the selected item from the category list and removes it.
+        if (result.get() == ButtonType.OK) {
+            Categories deleteCategory = categoriesTableView.getSelectionModel().getSelectedItem();
+            categoriesModel.deletedCategories(deleteCategory);
+        }
+        //If you're doing anything else than pressing the OK button it doesn't do anything.
+        else {
+
         }
     }
 }
