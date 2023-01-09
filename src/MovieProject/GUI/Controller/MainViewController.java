@@ -286,6 +286,11 @@ public void playVideo(String moviePath) throws IOException {
         double rating = Double.parseDouble(JOptionPane.showInputDialog(""));
         movieModel.updateMovieRating(movie, rating);
         MovieTableView.setItems(movieModel.showList());
+        if (rating > 0 && rating < 10) {
+
+        } else {
+            informationUser("Your rating value needs to be between 1-10");
+        }
     }
 
     public void handleSearch(ActionEvent actionEvent) {

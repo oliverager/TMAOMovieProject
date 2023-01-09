@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-
-    <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="">
+    <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewMovieController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewMovieController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Model/CategoriesModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Model/CategoriesModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/NewMovie.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/NewMovie.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/mainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/View/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/View/mainWindow.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
