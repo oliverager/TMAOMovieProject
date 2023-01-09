@@ -3,6 +3,8 @@ package MovieProject.GUI.Controller;
 import MovieProject.BE.Categories;
 
 
+import MovieProject.BE.Movie;
+import MovieProject.GUI.Model.CatMovieModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 //import MovieProject.GUI.Model;
@@ -26,6 +28,8 @@ public class NewMovieController extends BaseController implements Initializable 
     private MovieModel movieModel;
     private MainViewController mainController;
     private CategoriesModel categoriesModel;
+
+    private CatMovieModel catMovieModel;
 
 
     private ObservableList<Categories> getCategoriesToBeViewed;
@@ -76,6 +80,7 @@ public class NewMovieController extends BaseController implements Initializable 
         try {
             categoriesModel = new CategoriesModel();
             movieModel = new MovieModel();
+            catMovieModel = new CatMovieModel();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -98,27 +103,30 @@ public class NewMovieController extends BaseController implements Initializable 
         Double userRating = Double.parseDouble(txtUserRating.getText());
         Double imdbRating = Double.parseDouble(txtImdbRating.getText());
         String fPath = txtFilePath.getText();
+        int sizeOfList = lstSelectedCategory.getItems().size();
 
 
         Stage stage = (Stage) addMovie.getScene().getWindow();
         stage.close();
 
 
-        try {
-            movieModel.addMovie(title, userRating, imdbRating, fPath);
+        if (userRating.doubleValue() > 0 && userRating.doubleValue() < 11 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() < 11) {
+            try {
+                movieModel.addMovie(title, userRating, imdbRating, fPath);
 
-            if (userRating.doubleValue() > 0 && userRating.doubleValue() < 11 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() < 11) {
-                try {
-                    movieModel.addMovie(title, userRating, imdbRating, fPath);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                for (int i = 0; i < sizeOfList; i++) {
+                    Categories categories = lstSelectedCategory.getItems().get(i);
+                    Movie movie = movieModel.getObservableMovies().get(23);
+                    catMovieModel.addMovieToCategory(movie,categories);
                 }
-            } else {
-                mainController.informationUser("Your rating value needs to be between 1-10");
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } else {
+            mainController.informationUser("Your rating value needs to be between 1-10");
         }
+
     }
     public void handleCancelMovie(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelMovie.getScene().getWindow();
