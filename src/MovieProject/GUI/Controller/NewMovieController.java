@@ -110,7 +110,7 @@ public class NewMovieController extends BaseController implements Initializable 
         stage.close();
 
 
-        if (userRating.doubleValue() > 0 && userRating.doubleValue() < 11 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() < 11) {
+        if (userRating.doubleValue() > 0 && userRating.doubleValue() <= 10 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() <= 10) {
             try {
                 movieModel.addMovie(title, userRating, imdbRating, fPath);
                 int movieNumber= movieModel.getMovieNumber(title);
