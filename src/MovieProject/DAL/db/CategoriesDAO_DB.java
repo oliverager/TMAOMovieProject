@@ -94,7 +94,7 @@ public class CategoriesDAO_DB implements ICategoriesDAO {
         try (Connection conn = databaseConnector.getConnection()) {
 
             String sql = "DELETE CatMovie FROM CatMovie inner join Category on Category.id =CatMovie.CategoryId " +
-                    "WHERE CatMovie.ID=? DELETE from Category WHERE Category.Id=?;";
+                    "WHERE CatMovie.CategoryId=? DELETE from Category WHERE Category.Id=?;";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 

@@ -113,10 +113,13 @@ public class NewMovieController extends BaseController implements Initializable 
         if (userRating.doubleValue() > 0 && userRating.doubleValue() < 11 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() < 11) {
             try {
                 movieModel.addMovie(title, userRating, imdbRating, fPath);
+                int movieNumber= movieModel.getMovieNumber(title);
+
+
 
                 for (int i = 0; i < sizeOfList; i++) {
                     Categories categories = lstSelectedCategory.getItems().get(i);
-                    Movie movie = movieModel.getObservableMovies().get(23);
+                    Movie movie = movieModel.getObservableMovies().get(movieNumber);
                     catMovieModel.addMovieToCategory(movie,categories);
                 }
 

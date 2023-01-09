@@ -31,21 +31,7 @@ public class DatabaseConnector {
 
     public static void main(String[] args) throws SQLException {
 
-        DatabaseConnector databaseConnector = new DatabaseConnector();
 
-        try (Connection connection = databaseConnector.getConnection()) {
-
-            //System.out.println("Is it open? " + !connection.isClosed());
-            MovieDAO_DB movieDAODb= new MovieDAO_DB();
-
-
-            movieDAODb.getAllMovies();
-         //  movieDAODb.addMovie("Gurli gris2",1.2,2.3,"sss");
-
-
-        } //Connection gets closed here
-        catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
-}
+

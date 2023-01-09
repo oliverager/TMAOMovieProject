@@ -264,6 +264,9 @@ public void playVideo(String moviePath) throws IOException {
             exc.printStackTrace();
             throw new Exception("Could not delete Category", exc);
         }
+
+        categoriesTableView.setItems(categoriesModel.showList());
+
     }
 
     public void deleteMoviesAction(ActionEvent actionEvent) throws Exception{
@@ -271,7 +274,9 @@ public void playVideo(String moviePath) throws IOException {
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("You are about to delete a Movie");
         alert.setContentText("Are you sure you want to delete?");
+
         Optional<ButtonType> result = alert.showAndWait();
+
         if (result.get() == ButtonType.OK) {
             Movie deletedMovie = MovieTableView.getSelectionModel().getSelectedItem();
             movieModel.deletedMovie(deletedMovie);

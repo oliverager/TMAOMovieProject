@@ -60,5 +60,9 @@ public class MovieModel {
         movieManager.updateMovieRating(movie,rating);
     }
 
+    public int getMovieNumber(String movieTitle) throws Exception
+    {
+        return movieManager.getMovieNumber(movieTitle);
+    }
 
 }

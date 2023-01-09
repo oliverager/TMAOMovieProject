@@ -3,6 +3,7 @@ package MovieProject.BLL;
 import MovieProject.BE.Movie;
 import MovieProject.DAL.IMovieDAO;
 import MovieProject.DAL.db.MovieDAO_DB;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -33,6 +34,11 @@ public class MovieManager {
     {
         movieDAO.updateMovieRating(movie,rating);
     }
+
+    public int getMovieNumber(String movieTitle) throws Exception
+            {
+        return movieDAO.getMovieNumber(movieTitle);
+        }
 
 
 
