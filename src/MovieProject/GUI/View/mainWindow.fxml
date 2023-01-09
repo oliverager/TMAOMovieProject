@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MovieProject.GUI.Controller.MainViewController">
+<AnchorPane prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MovieProject.GUI.Controller.MainViewController">
    <children>
-      <TableView fx:id="categoriesTableView" layoutX="-46.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <TableView fx:id="categoriesTableView" layoutX="-46.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
         <columns>
           <TableColumn fx:id="categoriesTableColumn" prefWidth="200.0" text="Categories" />
         </columns>
@@ -30,5 +26,6 @@
       <TextField fx:id="searchField" layoutX="660.0" layoutY="20.0" prefHeight="26.0" prefWidth="334.0" promptText="Search" />
       <Button fx:id="updateRating" layoutX="348.0" layoutY="565.0" mnemonicParsing="false" onAction="#updateRatingsAction" text="Update Rating" />
       <Button fx:id="searchButton" layoutX="1008.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleSearch" text="Search" />
+      <Button fx:id="btnClearCategories" layoutX="94.0" layoutY="21.0" mnemonicParsing="false" onAction="#clearCategories" prefWidth="200.0" text=" Clear Categories" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>
