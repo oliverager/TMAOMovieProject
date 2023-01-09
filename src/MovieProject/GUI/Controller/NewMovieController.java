@@ -29,6 +29,9 @@ public class NewMovieController extends BaseController implements Initializable 
 
 
     private ObservableList<Categories> getCategoriesToBeViewed;
+
+    @FXML
+    private Button btnDeselectCategory;
     @FXML
     private Button addMovie;
 
@@ -149,7 +152,15 @@ public class NewMovieController extends BaseController implements Initializable 
 
     public void handleSelectCategory(ActionEvent actionEvent) {
         Categories selectedCategory = lstCategories.getSelectionModel().getSelectedItem();
+        lstCategories.getItems().remove(selectedCategory);
         lstSelectedCategory.getItems().add(selectedCategory);
+
+    }
+
+    public void handleDeselectCategory (ActionEvent actionEvent) {
+        Categories deslectedCategory = lstSelectedCategory.getSelectionModel().getSelectedItem();
+        lstSelectedCategory.getItems().remove(deslectedCategory);
+        lstCategories.getItems().add(deslectedCategory);
 
     }
 }
