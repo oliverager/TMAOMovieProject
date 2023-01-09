@@ -22,9 +22,9 @@ public class CatMovieManager {
         return catMovieDAODb.getAllMoviesFromCategory(categorieId);
     }
 
-    public void addSongToPlaylist(Movie selectedMovie, Categories selectedCategory) throws SQLException
+    public void addMovieToCategory(Movie selectedMovie, Categories selectedCategory) throws SQLException
     {
-        catMovieDAODb.addSongToPlaylist(selectedMovie, selectedCategory);
+        catMovieDAODb.addMovieToCategory(selectedMovie, selectedCategory);
     }
 
 

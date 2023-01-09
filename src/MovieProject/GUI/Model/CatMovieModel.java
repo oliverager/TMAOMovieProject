@@ -33,9 +33,8 @@ public class CatMovieModel {
         return moviesToBeViewed;
     }
 
-    public void addSongToPlaylist(Movie selectedMovie, Categories selectedCategory) throws SQLException
+    public void addMovieToCategory(Movie selectedMovie, Categories selectedCategory) throws SQLException
     {
-        catMovieManager.addSongToPlaylist(selectedMovie, selectedCategory);
+        catMovieManager.addMovieToCategory(selectedMovie, selectedCategory);
     }
-
 }

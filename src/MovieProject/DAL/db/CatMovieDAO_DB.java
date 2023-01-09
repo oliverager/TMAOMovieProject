@@ -68,7 +68,7 @@ public class CatMovieDAO_DB {
 
         }
 
-    public void addSongToPlaylist(Movie selectedMovie, Categories selectedCategory) throws SQLException {
+    public void addMovieToCategory(Movie selectedMovie, Categories selectedCategory) throws SQLException {
 
         String sql = "INSERT INTO CatMovie (CategoryId, MOvieId) VALUES (?,?);";
 
