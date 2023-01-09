@@ -1,5 +1,6 @@
 package MovieProject.BLL;
 
+import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
 import MovieProject.DAL.IMovieDAO;
 import MovieProject.DAL.db.CatMovieDAO_DB;
@@ -19,6 +20,11 @@ public class CatMovieManager {
 
     public List<Movie> getAllMoviesFromCategory(int categorieId) throws Exception {
         return catMovieDAODb.getAllMoviesFromCategory(categorieId);
+    }
+
+    public void addSongToPlaylist(Movie selectedMovie, Categories selectedCategory) throws SQLException
+    {
+        catMovieDAODb.addSongToPlaylist(selectedMovie, selectedCategory);
     }
 
 

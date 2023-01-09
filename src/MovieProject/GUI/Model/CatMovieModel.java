@@ -1,9 +1,12 @@
 package MovieProject.GUI.Model;
 
+import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
 import MovieProject.BLL.CatMovieManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.sql.SQLException;
 
 public class CatMovieModel {
 
@@ -30,6 +33,9 @@ public class CatMovieModel {
         return moviesToBeViewed;
     }
 
-
+    public void addSongToPlaylist(Movie selectedMovie, Categories selectedCategory) throws SQLException
+    {
+        catMovieManager.addSongToPlaylist(selectedMovie, selectedCategory);
+    }
 
 }

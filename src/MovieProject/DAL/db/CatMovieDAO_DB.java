@@ -1,11 +1,9 @@
 package MovieProject.DAL.db;
 
+import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,5 +67,29 @@ public class CatMovieDAO_DB {
         }
 
         }
+
+    public void addSongToPlaylist(Movie selectedMovie, Categories selectedCategory) throws SQLException {
+
+        String sql = "INSERT INTO CatMovie (CategoryId, MOvieId) VALUES (?,?);";
+
+        //Metoden hvor man bruger en preparedStatement sikre mod SQL injection. Således at man ikke kan ødelægge databasen.
+        // Ved spørgsmåltegnene indsættes data her tal. Data er tilføjet metoden og indsættes i setInt nedenunder.
+
+
+        try (Connection conn = databaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            int category = selectedCategory.getId();
+            int movie = selectedMovie.getId();
+
+            stmt.setInt(1, category);
+            stmt.setInt(2, movie);
+            stmt.executeUpdate();       //Her opdateres databasen.
+
+        }
+
+
+    }
+
 
     }
