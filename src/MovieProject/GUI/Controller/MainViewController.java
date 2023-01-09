@@ -36,9 +36,10 @@ public class MainViewController extends BaseController implements Initializable 
     public Button searchButton;
 
     public TableColumn IMDBTableColumn;
+    public Button btnClearCategories;
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
-        @FXML
+    @FXML
     private TableView<Categories> categoriesTableView;
     @FXML
     private TableView<Movie> MovieTableView;
@@ -90,7 +91,8 @@ public class MainViewController extends BaseController implements Initializable 
         RatingTableColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
         IMDBTableColumn.setCellValueFactory(new PropertyValueFactory<>("imdb"));
         ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("ToOld"));
-        MovieTableView.setItems(catMovieModel.getObservableMovies());
+        //MovieTableView.setItems(catMovieModel.getObservableMovies());
+        MovieTableView.setItems(movieModel.getObservableMovies());
     }
 
 
