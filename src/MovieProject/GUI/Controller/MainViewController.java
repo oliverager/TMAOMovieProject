@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainViewController extends BaseController implements Initializable {
@@ -36,6 +37,7 @@ public class MainViewController extends BaseController implements Initializable 
     public Button searchButton;
 
     public TableColumn IMDBTableColumn;
+
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
         @FXML
@@ -284,7 +286,16 @@ public void playVideo(String moviePath) throws IOException {
     }
 
 
-    public void deleteCategoriesAction(ActionEvent actionEvent) {
+    //Actionevent for when you press the delete button under category table.
+    public void deleteCategoriesAction(ActionEvent actionEvent) throws Exception {
+        //Tries to execute the method below, if that's not possible we get an exception thrown.
+        try {
+            confirmationAlertCategory();
+
+        } catch (Exception exc) {
+            exc.printStackTrace();
+            throw new Exception("Could not delete Category", exc);
+        }
     }
 
     public void deleteMoviesAction(ActionEvent actionEvent) {
@@ -308,6 +319,24 @@ public void playVideo(String moviePath) throws IOException {
             searchField.clear();
             MovieTableView.setItems(movieModel.getObservableMovies());
             searchButton.setText("Search");
+        }
+    }
+
+    //Makes a popup alert window that asks for confirmation that you want to delete the category.
+    public void confirmationAlertCategory() throws Exception {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("You are about to delete a Category");
+        alert.setContentText("Are you sure you want to delete?");
+        Optional<ButtonType> result = alert.showAndWait();
+        //If you press the OK button it takes the selected item from the category list and removes it.
+        if (result.get() == ButtonType.OK) {
+            Categories deleteCategory = categoriesTableView.getSelectionModel().getSelectedItem();
+            categoriesModel.deletedCategories(deleteCategory);
+        }
+        //If you're doing anything else than pressing the OK button it doesn't do anything.
+        else {
+
         }
     }
 }

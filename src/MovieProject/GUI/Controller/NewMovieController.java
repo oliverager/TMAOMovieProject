@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class NewMovieController extends BaseController implements Initializable {
 
+    //Importing and instanciating different models and FXML elements into the NewMovieController constructor.
     private MovieModel movieModel;
     private MainViewController mainController;
     private CategoriesModel categoriesModel;
@@ -106,7 +107,6 @@ public class NewMovieController extends BaseController implements Initializable 
             if (userRating.doubleValue() > 0 && userRating.doubleValue() < 11 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() < 11) {
                 try {
                     movieModel.addMovie(title, userRating, imdbRating, fPath);
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
