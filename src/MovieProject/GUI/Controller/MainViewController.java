@@ -38,6 +38,7 @@ public class MainViewController extends BaseController implements Initializable 
     public Button searchButton;
 
     public TableColumn IMDBTableColumn;
+    public Button btnClearCategories;
 
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
@@ -93,17 +94,18 @@ public class MainViewController extends BaseController implements Initializable 
         RatingTableColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
         IMDBTableColumn.setCellValueFactory(new PropertyValueFactory<>("imdb"));
         ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("ToOld"));
-       // MovieTableView.setItems(catMovieModel.getObservableMovies());
-         MovieTableView.setItems(movieModel.getObservableMovies());
-    }
 
+        MovieTableView.setItems(movieModel.getObservableMovies());
+    }
+    public void clearCategories(ActionEvent actionEvent) throws Exception {
+        MovieTableView.setItems(movieModel.getObservableMovies());
+    }
 
     public void setColoumsForCategories()
     {
         categoriesTableColumn.setCellValueFactory(new PropertyValueFactory<>("Categories"));
         categoriesTableView.setItems(categoriesModel.getCategoriesToBeViewed());
     }
-
 
     public void keyPressListenerMovie()
     {
@@ -113,7 +115,6 @@ public class MainViewController extends BaseController implements Initializable 
         });
     }
 
-
     public void keyPressListenerCategories()
     {
         categoriesTableView.setOnKeyPressed(event -> {
@@ -121,8 +122,6 @@ public class MainViewController extends BaseController implements Initializable 
                 System.out.println("hej");
         });
     }
-
-
 
     public void mouseListenerMovie()
     {
@@ -140,17 +139,9 @@ public class MainViewController extends BaseController implements Initializable 
                         displayError(e);
                     }
                 }
-
             }
-
-
         });
     }
-
-
-
-
-
 
     public void mouseListenerCategories()
     {
@@ -158,16 +149,11 @@ public class MainViewController extends BaseController implements Initializable 
 
             if (event.getClickCount() == 2)
                 selectMovieFromCategory();
-
-
+                MovieTableView.setItems(catMovieModel.getObservableMovies());
         });
     }
 
-
-
-    public void listenerMovieList()
-    {
-
+    public void listenerMovieList() {
         MovieTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
 
         {
@@ -175,13 +161,8 @@ public class MainViewController extends BaseController implements Initializable 
             movieDelete.setDisable(false);
         });
     }
-
-
-    public void listenerCategoryList()
-    {
-
+    public void listenerCategoryList() {
         categoriesTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
-
         {
             movieDelete.setDisable(true);
             categoriesDelete.setDisable(false);
@@ -191,26 +172,14 @@ public class MainViewController extends BaseController implements Initializable 
 
     public void selectMovieFromCategory()
     {
-        category=categoriesTableView.getSelectionModel().getSelectedItem();
-        int number=category.getId();
+        category = categoriesTableView.getSelectionModel().getSelectedItem();
+        int number = category.getId();
         try {
             catMovieModel.showList(number);
         } catch (Exception e) {
             displayError(e);
         }
-
-
     }
-
-
-
-
-
-
-
-
-
-
 
     public void handleNewMovie(ActionEvent actionEvent) throws Exception {
 
@@ -230,9 +199,6 @@ public class MainViewController extends BaseController implements Initializable 
         MovieTableView.setItems(movieModel.showList());
 
     }
-
-
-
     @Override
     public void setup() {
 
