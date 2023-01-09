@@ -90,7 +90,8 @@ public class MainViewController extends BaseController implements Initializable 
         RatingTableColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
         IMDBTableColumn.setCellValueFactory(new PropertyValueFactory<>("imdb"));
         ToOldTableColumn.setCellValueFactory(new PropertyValueFactory<>("ToOld"));
-        MovieTableView.setItems(catMovieModel.getObservableMovies());
+       // MovieTableView.setItems(catMovieModel.getObservableMovies());
+         MovieTableView.setItems(movieModel.getObservableMovies());
     }
 
 
@@ -222,8 +223,8 @@ public class MainViewController extends BaseController implements Initializable 
         stage.setTitle("New Window");
         stage.initModality(Modality.NONE);
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-        stage.show();
-        movieModel.showList();
+        stage.showAndWait();
+        MovieTableView.setItems(movieModel.showList());
 
     }
 
