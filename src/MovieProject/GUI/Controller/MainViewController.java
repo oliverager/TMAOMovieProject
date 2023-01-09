@@ -21,6 +21,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -314,7 +315,11 @@ public void playVideo(String moviePath) throws IOException {
         MovieTableView.setItems(movieModel.showList());
     }
 
-    public void updateRatingsAction(ActionEvent actionEvent) {
+    public void updateRatingsAction(ActionEvent actionEvent) throws Exception {
+        Movie movie = MovieTableView.getSelectionModel().getSelectedItem();
+        double rating = Double.parseDouble(JOptionPane.showInputDialog(""));
+        movieModel.updateMovieRating(movie, rating);
+        MovieTableView.setItems(movieModel.showList());
     }
 
     public void handleSearch(ActionEvent actionEvent) {
