@@ -119,8 +119,8 @@ public class NewMovieController extends BaseController implements Initializable 
 
                 for (int i = 0; i < sizeOfList; i++) {
                     Categories categories = lstSelectedCategory.getItems().get(i);
-                    Movie movie = movieModel.getObservableMovies().get(movieNumber);
-                    catMovieModel.addMovieToCategory(movie,categories);
+                    //Movie movie = movieModel.getObservableMovies().get(movieNumber);
+                    catMovieModel.addMovieToCategory(movieNumber,categories);
                 }
 
             } catch (Exception e) {

@@ -68,7 +68,7 @@ public class CatMovieDAO_DB {
 
         }
 
-    public void addMovieToCategory(Movie selectedMovie, Categories selectedCategory) throws SQLException {
+    public void addMovieToCategory(int  movieNumber, Categories selectedCategory) throws SQLException {
 
         String sql = "INSERT INTO CatMovie (CategoryId, MOvieId) VALUES (?,?);";
 
@@ -80,10 +80,9 @@ public class CatMovieDAO_DB {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             int category = selectedCategory.getId();
-            int movie = selectedMovie.getId();
 
             stmt.setInt(1, category);
-            stmt.setInt(2, movie);
+            stmt.setInt(2, movieNumber);
             stmt.executeUpdate();       //Her opdateres databasen.
 
         }
