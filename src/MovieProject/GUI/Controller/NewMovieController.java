@@ -35,42 +35,20 @@ public class NewMovieController extends BaseController implements Initializable 
     private ObservableList<Categories> getCategoriesToBeViewed;
 
     @FXML
-    private Button btnDeselectCategory;
-    @FXML
-    private Button addMovie;
+    private Button cancelMovie,btnSelectCategory,btnChooseFile,addMovie,btnDeselectCategory;
 
     @FXML
-    private Button btnChooseFile;
+    private TableView<Categories> lstCategories,lstSelectedCategory;
+
 
     @FXML
-    private Button btnSelectCategory;
+    private TableColumn<Categories, String> tableCategory,tableSelectedCategory;
+
 
     @FXML
-    private Button cancelMovie;
+    private TextField txtFilePath,txtImdbRating,txtMovieTitle,txtUserRating;
 
-    @FXML
-    private TableView<Categories> lstCategories;
 
-    @FXML
-    private TableView<Categories> lstSelectedCategory;
-
-    @FXML
-    private TableColumn<Categories, String> tableCategory;
-
-    @FXML
-    private TableColumn<Categories, String> tableSelectedCategory;
-
-    @FXML
-    private TextField txtFilePath;
-
-    @FXML
-    private TextField txtImdbRating;
-
-    @FXML
-    private TextField txtMovieTitle;
-
-    @FXML
-    private TextField txtUserRating;
 
 
 
@@ -119,7 +97,6 @@ public class NewMovieController extends BaseController implements Initializable 
 
                 for (int i = 0; i < sizeOfList; i++) {
                     Categories categories = lstSelectedCategory.getItems().get(i);
-                    //Movie movie = movieModel.getObservableMovies().get(movieNumber);
                     catMovieModel.addMovieToCategory(movieNumber,categories);
                 }
 
@@ -152,10 +129,6 @@ public class NewMovieController extends BaseController implements Initializable 
         else{
             mainController.informationUser("Your file needs to be in mp4 or mpeg4 format");
         }
-
-
-
-
 
 
 
