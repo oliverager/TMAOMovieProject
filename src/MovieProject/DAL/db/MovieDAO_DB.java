@@ -179,47 +179,5 @@ public class MovieDAO_DB implements IMovieDAO {
             throw new Exception("Could not update song", ex);
         }
     }
-
-
-
-    public int getMovieNumber(String movieTitle) throws Exception {
-
-        //int songNumber=song.getId();
-        int movieNumber = 0;
-
-        String sql = "SELECT * FROM movie  WHERE movie.name='" + movieTitle+"';";
-
-        //Denne metode sender et heltal retur fra krydstabellen hvor movieID er givet.
-        // Vi har valgt at bruge variabler i vores sql streng. Da vi ikke skriver til databasen er der ikke fare for SQL injection.
-
-
-
-        try (Connection conn = databaseConnector.getConnection();
-             Statement stmt = conn.createStatement()) {
-
-            ResultSet rs = stmt.executeQuery(sql);
-
-            // Loop through rows from the database result set
-            while (rs.next()) {
-                movieNumber = rs.getInt("id");
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return movieNumber;
-
-    }
-
-
-
-
-
-
-
-
-
-
 }
 

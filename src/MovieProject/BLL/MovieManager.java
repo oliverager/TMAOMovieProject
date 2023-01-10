@@ -35,11 +35,5 @@ public class MovieManager {
         movieDAO.updateMovieRating(movie,rating);
     }
 
-    public int getMovieNumber(String movieTitle) throws Exception
-            {
-        return movieDAO.getMovieNumber(movieTitle);
-        }
-
-
 
     }

@@ -14,7 +14,7 @@ import java.util.Properties;
 
 public class DatabaseConnector {
 
-    private static final String PROP_FILE = "TMAOMovieProject/Data/database.settings";
+    private static final String PROP_FILE = "Data/database.settings";
     private SQLServerDataSource dataSource;
 
     public DatabaseConnector() throws IOException {
@@ -46,10 +46,6 @@ public class DatabaseConnector {
 
         MovieDAO_DB movieDAODb=new MovieDAO_DB();
         movieDAODb.addMovie("Prøve2",2.3 , 3.4, "ddddd");
-
-
-
-
 
         }
     }

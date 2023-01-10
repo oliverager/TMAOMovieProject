@@ -17,7 +17,8 @@ public class MovieModel {
         moviesToBeViewed = FXCollections.observableArrayList();
         moviesToBeViewed.addAll(movieManager.getAllMovies());
     }
-    public ObservableList<Movie> getObservableMovies(){
+
+    public ObservableList<Movie> getObservableMovies() {
         return moviesToBeViewed;
     }
 
@@ -40,29 +41,19 @@ public class MovieModel {
     }
 
 
-
-
-
-
-    public void addMovie(String name, double rating, double imdb,String fileLink) throws Exception {
-        movieManager.addMovie(name, rating, imdb,fileLink);
+    public void addMovie(String name, double rating, double imdb, String fileLink) throws Exception {
+        movieManager.addMovie(name, rating, imdb, fileLink);
     }
+
     public void deletedMovie(Movie deletedMovie) throws Exception {
         movieManager.deletedMovie(deletedMovie);
     }
-        public void updateMovie(Movie updateMovieLastview) throws Exception
-        {
-            movieManager.updateMovieLastview(updateMovieLastview);
-        }
 
-    public void updateMovieRating(Movie movie, double rating) throws Exception
-    {
-        movieManager.updateMovieRating(movie,rating);
+    public void updateMovie(Movie updateMovieLastview) throws Exception {
+        movieManager.updateMovieLastview(updateMovieLastview);
     }
 
-    public int getMovieNumber(String movieTitle) throws Exception
-    {
-        return movieManager.getMovieNumber(movieTitle);
+    public void updateMovieRating(Movie movie, double rating) throws Exception {
+        movieManager.updateMovieRating(movie, rating);
     }
-
 }

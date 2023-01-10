@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class NewMovieController extends BaseController implements Initializable {
 
-    //Importing and instanciating different models and FXML elements into the NewMovieController constructor.
+    //Importing and instantiating different models and FXML elements into the NewMovieController constructor.
     private MovieModel movieModel;
     private MainViewController mainController;
     private CategoriesModel categoriesModel;
@@ -53,8 +53,11 @@ public class NewMovieController extends BaseController implements Initializable 
 
 
 
+    //Initialize method that opens up the window and feeds data to the table-vies.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //instantiating the models we need to use.
         try {
             categoriesModel = new CategoriesModel();
             movieModel = new MovieModel();
@@ -63,6 +66,7 @@ public class NewMovieController extends BaseController implements Initializable 
             throw new RuntimeException(e);
         }
 
+        //lstCategories is a table view but is called lst due to updates. These lines feeds the data to the table-view.
         tableCategory.setCellValueFactory(new PropertyValueFactory<>("Categories"));
         lstCategories.setItems(categoriesModel.getCategoriesToBeViewed());
 
@@ -71,16 +75,22 @@ public class NewMovieController extends BaseController implements Initializable 
     }
 
 
+    //gets our model
     public void setup() {
         MovieModel movieModel = getModel();
     }
 
 
+    //the method that adds and binds the movie with the categories you selected.
     public void handleAddMovie(ActionEvent actionEvent) throws Exception {
+
+        //getting info from our txt-lines and table-views.
         String title = txtMovieTitle.getText();
         Double userRating = Double.parseDouble(txtUserRating.getText());
         Double imdbRating = Double.parseDouble(txtImdbRating.getText());
         String fPath = txtFilePath.getText();
+
+        //used in our for loop to generate category and movie matches.
         int sizeOfList = lstSelectedCategory.getItems().size();
 
 
@@ -90,14 +100,21 @@ public class NewMovieController extends BaseController implements Initializable 
 
         if (userRating.doubleValue() > 0 && userRating.doubleValue() <= 10 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() <= 10) {
             try {
+
+                //adding the movie
                 movieModel.addMovie(title, userRating, imdbRating, fPath);
-                int movieNumber= movieModel.getMovieNumber(title);
 
 
-
+                /** iterable for loop where i has to be smaller than the size of the list of selected categories.
+                 * i increases each time it goes through the loop, each pass through the loop connects a category with the movie
+                **/
                 for (int i = 0; i < sizeOfList; i++) {
+
+                    //
+                    int sizeofMovie = movieModel.showList().size();
+                    Movie movie = movieModel.showList().get(sizeofMovie - 1);
                     Categories categories = lstSelectedCategory.getItems().get(i);
-                    catMovieModel.addMovieToCategory(movieNumber,categories);
+                    catMovieModel.addMovieToCategory(movie ,categories);
                 }
 
             } catch (Exception e) {

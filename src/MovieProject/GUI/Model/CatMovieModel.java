@@ -33,8 +33,8 @@ public class CatMovieModel {
         return moviesToBeViewed;
     }
 
-    public void addMovieToCategory(int movieNumber, Categories selectedCategory) throws SQLException
+    public void addMovieToCategory(Movie selectedMovie, Categories selectedCategory) throws SQLException
     {
-        catMovieManager.addMovieToCategory(movieNumber, selectedCategory);
+        catMovieManager.addMovieToCategory(selectedMovie, selectedCategory);
     }
 }

@@ -19,7 +19,6 @@ public interface IMovieDAO {
 
     public void updateMovieRating(Movie movie, double rating) throws Exception;
 
-    public int getMovieNumber(String movieTitle) throws Exception;
 
 }
 
