@@ -3,25 +3,37 @@ package MovieProject.DAL.db;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Properties;
 
 public class DatabaseConnector {
 
-    //Class will easv.mrs.be included when we start working on DATABASES
+    private static final String PROP_FILE = "TMAOMovieProject/Data/database.settings";
     private SQLServerDataSource dataSource;
 
-    public DatabaseConnector()
-    {
+    public DatabaseConnector() throws IOException {
+
+        Properties databaseProperties = new Properties();
+        databaseProperties.load(new FileInputStream(new File(PROP_FILE)));
+
+            String server = databaseProperties.getProperty("Server");
+        String database = databaseProperties.getProperty("Database");
+        String user = databaseProperties.getProperty("User");
+        String password = databaseProperties.getProperty("Password");
+
         dataSource = new SQLServerDataSource();
-        dataSource.setServerName("10.176.111.31");
-        dataSource.setDatabaseName("MovieSystemTMAO");
-        dataSource.setUser("CSe22A_37");
-        dataSource.setPassword("CSe22A_37");
+        dataSource.setServerName(server);
+        dataSource.setDatabaseName(database);
+        dataSource.setUser(user);
+        dataSource.setPassword(password);
         dataSource.setTrustServerCertificate(true);
-        //dataSource.setPortNumber(1433);
+
     }
 
     public Connection getConnection() throws SQLServerException {
@@ -29,7 +41,14 @@ public class DatabaseConnector {
     }
 
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws Exception {
+
+
+        MovieDAO_DB movieDAODb=new MovieDAO_DB();
+        movieDAODb.addMovie("Prøve2",2.3 , 3.4, "ddddd");
+
+
+
 
 
         }

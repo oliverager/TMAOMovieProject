@@ -3,6 +3,7 @@ package MovieProject.DAL.db;
 import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class CatMovieDAO_DB {
     private DatabaseConnector databaseConnector;
 
 
-    public CatMovieDAO_DB() throws SQLException {
+    public CatMovieDAO_DB() throws SQLException, IOException {
         databaseConnector = new DatabaseConnector();
     }
 
