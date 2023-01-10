@@ -289,10 +289,9 @@ public void playVideo(String moviePath) throws IOException {
     public void updateRatingsAction(ActionEvent actionEvent) throws Exception {
         Movie movie = MovieTableView.getSelectionModel().getSelectedItem();
         double rating = Double.parseDouble(JOptionPane.showInputDialog(""));
-        movieModel.updateMovieRating(movie, rating);
-        MovieTableView.setItems(movieModel.showList());
         if (rating >= 0 && rating <= 10) {
-
+            movieModel.updateMovieRating(movie, rating);
+            MovieTableView.setItems(movieModel.showList());
         } else {
             informationUser("Your rating value needs to be between 1-10");
         }

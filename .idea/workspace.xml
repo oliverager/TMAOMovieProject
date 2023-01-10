@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BLL/CatMovieManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/BLL/CatMovieManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/CatMovieDAO_DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/CatMovieDAO_DB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewMovieController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewMovieController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Model/CatMovieModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Model/CatMovieModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/NewMovie.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/NewMovie.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/mainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" afterDir="false" />
     </list>
@@ -52,10 +57,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Morte\IdeaProjects\TMAOMovieProject" />
       <recent name="C:\IdeaProjects\TMAOMovieProject\src\MovieProject" />
       <recent name="C:\IdeaProjects\TMAOMovieProject\src\MovieProject\GUI\Controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Morte\IdeaProjects\TMAOMovieProject\lib" />
       <recent name="C:\IdeaProjects\TMAOMovieProject\src\MovieProject" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -95,6 +102,7 @@
       <workItem from="1672836322725" duration="3000" />
       <workItem from="1672990959729" duration="4806000" />
       <workItem from="1673251448894" duration="6000" />
+      <workItem from="1673337624495" duration="299000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1672736843025</created>
