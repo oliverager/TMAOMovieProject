@@ -204,6 +204,7 @@ public class MainViewController extends BaseController implements Initializable 
 
     }
 
+    // Opens a new window where you can add a new category to the category table
     public void handleNewCategory(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MovieProject/GUI/View/NewCategory.fxml"));
         Parent root = loader.load();
@@ -220,7 +221,7 @@ public class MainViewController extends BaseController implements Initializable 
         stage.show();
     }
 
-public void playVideo(String moviePath) throws IOException {
+    public void playVideo(String moviePath) throws IOException {
 
     boolean filesExits= Files.exists(Path.of(moviePath)); //check om filen eksisterer
 
@@ -269,6 +270,7 @@ public void playVideo(String moviePath) throws IOException {
 
     }
 
+    // Deletes a chosen movie and gives an alert before deleting
     public void deleteMoviesAction(ActionEvent actionEvent) throws Exception{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
@@ -286,6 +288,7 @@ public void playVideo(String moviePath) throws IOException {
         MovieTableView.setItems(movieModel.showList());
     }
 
+    // Updates the user rating of a chosen movie
     public void updateRatingsAction(ActionEvent actionEvent) throws Exception {
         Movie movie = MovieTableView.getSelectionModel().getSelectedItem();
         double rating = Double.parseDouble(JOptionPane.showInputDialog(""));
@@ -297,6 +300,7 @@ public void playVideo(String moviePath) throws IOException {
         }
     }
 
+    // Button to search for movies which changes to 'clear'. When pressed again it clears the search result
     public void handleSearch(ActionEvent actionEvent) {
         if (searchButton.getText().equals("Search")) {
             if (searchField.getText() != null) {
