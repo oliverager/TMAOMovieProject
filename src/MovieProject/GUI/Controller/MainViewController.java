@@ -157,7 +157,8 @@ public class MainViewController extends BaseController implements Initializable 
             txtMovieDescription.clear();
             movieImageView.setVisible(false);
 
-            updateRating.setDisable(false);
+            updateRating.setDisable(false
+            );
             categoriesDelete.setDisable(true);
             movieDelete.setDisable(false);
 
