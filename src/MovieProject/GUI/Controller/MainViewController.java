@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -32,33 +34,25 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainViewController extends BaseController implements Initializable {
-
     public TextField searchField;
-
     public Button searchButton;
-
     public TableColumn IMDBTableColumn;
     public Button btnClearCategories;
-
+    public ImageView movieImageView;
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
-        @FXML
+    @FXML
     private TableView<Categories> categoriesTableView;
     @FXML
     private TableView<Movie> MovieTableView;
-
     @FXML
-    private TextArea movieTextArea;
-
+    private TextArea txtMovieDescription;
     @FXML
-    private Button movieAdd,movieDelete,categoriesAdd,categoriesDelete,updateRating;
-
-    private String errorText;;
+    private Button movieDelete,categoriesDelete,updateRating;
+    private String errorText;
     MovieModel movieModel;
     CategoriesModel categoriesModel;
-
     CatMovieModel catMovieModel;
-
     Categories category;
     Movie movie;
 
@@ -86,6 +80,8 @@ public class MainViewController extends BaseController implements Initializable 
         listenerMovieList();
         mouseListenerCategories();
         listenerCategoryList();
+        movieDetails();
+
     }
 
         public void setColoumsForMovies()
@@ -97,16 +93,17 @@ public class MainViewController extends BaseController implements Initializable 
 
         MovieTableView.setItems(movieModel.getObservableMovies());
     }
-    public void clearCategories(ActionEvent actionEvent) throws Exception {
-        MovieTableView.setItems(movieModel.getObservableMovies());
-    }
 
     public void setColoumsForCategories()
     {
         categoriesTableColumn.setCellValueFactory(new PropertyValueFactory<>("Categories"));
+
         categoriesTableView.setItems(categoriesModel.getCategoriesToBeViewed());
     }
 
+    public void clearCategories(ActionEvent actionEvent) {
+        MovieTableView.setItems(movieModel.getObservableMovies());
+    }
     public void keyPressListenerMovie()
     {
         MovieTableView.setOnKeyPressed(event -> {
@@ -123,21 +120,33 @@ public class MainViewController extends BaseController implements Initializable 
         });
     }
 
-    public void mouseListenerMovie()
-    {
+    public void mouseListenerMovie() {
         MovieTableView.setOnMouseClicked(event -> {
 
             if (event.getClickCount() == 2) {
-                {
 
-                    movie=MovieTableView.getSelectionModel().getSelectedItem();
-                    String moviePath=movie.getFileLink();
+                movie = MovieTableView.getSelectionModel().getSelectedItem();
+                String moviePath = movie.getMovieFile();
 
-                    try {
-                        playVideo(moviePath);
-                    } catch (IOException e) {
-                        displayError(e);
-                    }
+                try {
+                    playVideo(moviePath);
+                } catch (IOException e) {
+                    displayError(e);
+                }
+            }
+        });
+    }
+    public void movieDetails() {
+        MovieTableView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                movie = MovieTableView.getSelectionModel().getSelectedItem();
+                txtMovieDescription.appendText(movie.getDescription());
+                String imagePath = movie.getImageFile();
+
+                try {
+                    movieImageView.setImage(new Image(imagePath));
+                } catch (Exception e) {
+                    displayError(e);
                 }
             }
         });
@@ -149,7 +158,7 @@ public class MainViewController extends BaseController implements Initializable 
 
             if (event.getClickCount() == 2)
                 selectMovieFromCategory();
-                MovieTableView.setItems(catMovieModel.getObservableMovies());
+            MovieTableView.setItems(catMovieModel.getObservableMovies());
         });
     }
 
@@ -222,20 +231,15 @@ public class MainViewController extends BaseController implements Initializable 
     }
 
     public void playVideo(String moviePath) throws IOException {
-
-    boolean filesExits= Files.exists(Path.of(moviePath)); //check om filen eksisterer
-
-    if (filesExits)
-    {
-        File file = new File(moviePath);
-        Desktop desktop = Desktop.getDesktop();
-        if(file.exists()) desktop.open(file);
-
-    }
-    else
-        informationUser("File do not exist!");      //Her kaldes en metode, der viser et vindue med besked om, at filen ikke findes.
-
-    //text file, should be opening in default text editor
+        boolean filesExits= Files.exists(Path.of(moviePath)); //check om filen eksisterer
+        if (filesExits) {
+            File file = new File(moviePath);
+            Desktop desktop = Desktop.getDesktop();
+            if (file.exists()) desktop.open(file);
+        } else
+            informationUser("File do not exist!");
+            // Her kaldes en metode, der viser et vindue med besked om, at filen ikke findes.
+            // Text file, should be opening in default text editor
 
 }
 
@@ -283,7 +287,7 @@ public class MainViewController extends BaseController implements Initializable 
             Movie deletedMovie = MovieTableView.getSelectionModel().getSelectedItem();
             movieModel.deletedMovie(deletedMovie);
         } else {
-
+            //TODO
         }
         MovieTableView.setItems(movieModel.showList());
     }
@@ -329,7 +333,7 @@ public class MainViewController extends BaseController implements Initializable 
         }
         //If you're doing anything else than pressing the OK button it doesn't do anything.
         else {
-
+            //TODO
         }
     }
 }

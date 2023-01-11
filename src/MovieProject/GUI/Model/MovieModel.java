@@ -41,8 +41,8 @@ public class MovieModel {
     }
 
 
-    public void addMovie(String name, double rating, double imdb, String fileLink) throws Exception {
-        movieManager.addMovie(name, rating, imdb, fileLink);
+    public void addMovie(String name, String description, double rating, double imdb, String movieFile, String imageFile) throws Exception {
+        movieManager.addMovie(name, description, rating, imdb, movieFile, imageFile);
     }
 
     public void deletedMovie(Movie deletedMovie) throws Exception {

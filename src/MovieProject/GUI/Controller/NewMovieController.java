@@ -7,7 +7,6 @@ import MovieProject.BE.Movie;
 import MovieProject.GUI.Model.CatMovieModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
-//import MovieProject.GUI.Model;
 import MovieProject.GUI.Model.CategoriesModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,29 +23,21 @@ import java.util.ResourceBundle;
 
 public class NewMovieController extends BaseController implements Initializable {
 
+    public TextArea txtDescription;
     //Importing and instantiating different models and FXML elements into the NewMovieController constructor.
     private MovieModel movieModel;
     private MainViewController mainController;
     private CategoriesModel categoriesModel;
-
     private CatMovieModel catMovieModel;
-
-
     private ObservableList<Categories> getCategoriesToBeViewed;
-
     @FXML
-    private Button cancelMovie,btnSelectCategory,btnChooseFile,addMovie,btnDeselectCategory;
-
+    private Button cancelMovie,btnSelectCategory,btnImageChooseFile,btnMovieChooseFile, addMovie,btnDeselectCategory;
     @FXML
     private TableView<Categories> lstCategories,lstSelectedCategory;
-
-
     @FXML
     private TableColumn<Categories, String> tableCategory,tableSelectedCategory;
-
-
     @FXML
-    private TextField txtFilePath,txtImdbRating,txtMovieTitle,txtUserRating;
+    private TextField txtMovieFilePath, txtImageFilePath, txtImdbRating,txtMovieTitle,txtUserRating;
 
 
 
@@ -66,29 +57,27 @@ public class NewMovieController extends BaseController implements Initializable 
             throw new RuntimeException(e);
         }
 
-        //lstCategories is a table view but is called lst due to updates. These lines feeds the data to the table-view.
+        //lstCategories is a table view but is called lst due to updates. These lines feed the data to the table-view.
         tableCategory.setCellValueFactory(new PropertyValueFactory<>("Categories"));
         lstCategories.setItems(categoriesModel.getCategoriesToBeViewed());
 
         tableSelectedCategory.setCellValueFactory(new PropertyValueFactory<>("Categories"));
-
     }
-
 
     //gets our model
     public void setup() {
         MovieModel movieModel = getModel();
     }
-
-
     //the method that adds and binds the movie with the categories you selected.
     public void handleAddMovie(ActionEvent actionEvent) throws Exception {
 
         //getting info from our txt-lines and table-views.
         String title = txtMovieTitle.getText();
+        String description = txtDescription.getText();
         Double userRating = Double.parseDouble(txtUserRating.getText());
         Double imdbRating = Double.parseDouble(txtImdbRating.getText());
-        String fPath = txtFilePath.getText();
+        String mfPath = txtMovieFilePath.getText();
+        String ifPath = txtImageFilePath.getText();
 
         //used in our for loop to generate category and movie matches.
         int sizeOfList = lstSelectedCategory.getItems().size();
@@ -102,12 +91,12 @@ public class NewMovieController extends BaseController implements Initializable 
             try {
 
                 //adding the movie
-                movieModel.addMovie(title, userRating, imdbRating, fPath);
+                movieModel.addMovie(title, description, userRating, imdbRating, mfPath, ifPath);
 
 
-                /** iterable for loop where i has to be smaller than the size of the list of selected categories.
-                 * i increases each time it goes through the loop, each pass through the loop connects a category with the movie
-                **/
+                /* iterable for loop where I have to be smaller than the size of the list of selected categories.
+                  I increase each time it goes through the loop, each pass through the loop connects a category with the movie
+                */
                 for (int i = 0; i < sizeOfList; i++) {
 
                     //
@@ -129,8 +118,25 @@ public class NewMovieController extends BaseController implements Initializable 
         Stage stage = (Stage) cancelMovie.getScene().getWindow();
         stage.close();
     }
+    public void handleImageChooseFile(ActionEvent actionEvent) {
+        try {
+            mainController = new MainViewController();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-    public void handleChooseFile(ActionEvent actionEvent) {
+        FileChooser fc = new FileChooser();
+        Stage fileStage = (Stage) cancelMovie.getScene().getWindow();
+        File f = fc.showOpenDialog(fileStage);
+        if (f.getPath().endsWith(".jpg") || f.getPath().endsWith(".png")) {
+            txtImageFilePath.setText(f.getPath());
+        }
+        else{
+            mainController.informationUser("Your file needs to be in jpg or png format");
+        }
+    }
+
+    public void handleMovieChooseFile(ActionEvent actionEvent) {
         try {
             mainController = new MainViewController();
         } catch (Exception e) {
@@ -141,14 +147,11 @@ public class NewMovieController extends BaseController implements Initializable 
         Stage fileStage = (Stage) cancelMovie.getScene().getWindow();
         File f = fc.showOpenDialog(fileStage);
         if (f.getPath().endsWith(".mp4") || f.getPath().endsWith("mpeg4")) {
-            txtFilePath.setText(f.getPath());
+            txtMovieFilePath.setText(f.getPath());
         }
         else{
             mainController.informationUser("Your file needs to be in mp4 or mpeg4 format");
         }
-
-
-
     }
 
     public void handleSelectCategory(ActionEvent actionEvent) {
@@ -159,9 +162,9 @@ public class NewMovieController extends BaseController implements Initializable 
     }
 
     public void handleDeselectCategory (ActionEvent actionEvent) {
-        Categories deslectedCategory = lstSelectedCategory.getSelectionModel().getSelectedItem();
-        lstSelectedCategory.getItems().remove(deslectedCategory);
-        lstCategories.getItems().add(deslectedCategory);
+        Categories deselectedCategory = lstSelectedCategory.getSelectionModel().getSelectedItem();
+        lstSelectedCategory.getItems().remove(deselectedCategory);
+        lstCategories.getItems().add(deselectedCategory);
 
     }
 }

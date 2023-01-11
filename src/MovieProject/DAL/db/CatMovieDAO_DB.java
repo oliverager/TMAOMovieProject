@@ -21,17 +21,17 @@ public class CatMovieDAO_DB {
     }
 
 
-    public List<Movie> getAllMoviesFromCategory(int categorieId) throws Exception {
+    public List<Movie> getAllMoviesFromCategory(int categoriesId) throws Exception {
         ArrayList<Movie> allMovies = new ArrayList<>();
         boolean toOld;
 
         try (Connection conn = databaseConnector.getConnection();
              Statement stmt = conn.createStatement()) {
 
-            String sql = "SELECT * FROM Movie M,CatMovie CM, Category C  WHERE M.Id = CM.MOvieId and C.Id = CM.CategoryId and CM.CategoryId=" + categorieId + ";";
+            String sql = "SELECT * FROM Movie M,CatMovie CM, Category C  WHERE M.Id = CM.MOvieId and C.Id = CM.CategoryId and CM.CategoryId=" + categoriesId + ";";
 
-            //sql koden henter fra vores tre tabeller, hvor movie id i krydstabellen og movie skal være ens
-            // og kategorie nummer skal være ens i kategorie og i krydstabellen.
+            // SQL koden henter fra vores tre tabeller, hvor movie id i krydstabellen og movie skal være ens
+            // og categorise nummer skal være ens i categorise og i krydstabellen.
 
 
             ResultSet rs = stmt.executeQuery(sql);  //Her vises resultat settet
@@ -39,13 +39,15 @@ public class CatMovieDAO_DB {
             // Loop through rows from the database result set
             while (rs.next()) {
 
-                //Map DB row to Song object
+                //Map DB row to Movie object
                 int id = rs.getInt("Id");
                 String name = rs.getString("Name");
-                int rating = rs.getInt("rating");
-                int imdb = rs.getInt("imdb");
-                String filelink = rs.getString("filelink");
-                LocalDate lastview = rs.getDate("lastview").toLocalDate();
+                String description = rs.getString("description");
+                double rating = rs.getDouble("Rating");
+                double imdb = rs.getDouble("imdb");
+                String movieFile = rs.getString("MovieFile");
+                String imageFile = rs.getString("ImageFile");
+                LocalDate lastview = rs.getDate("Lastview").toLocalDate();
 
                 int days = (int) DAYS.between(lastview, LocalDate.now());
 
@@ -55,16 +57,16 @@ public class CatMovieDAO_DB {
                     toOld = false;
 
 
-                Movie movie = new Movie(id, name, rating, imdb, filelink, lastview, toOld); //De hentede data gemmes i sang objekter
+                Movie movie = new Movie(id, name, description, rating, imdb, movieFile, imageFile, lastview, toOld);
 
-                allMovies.add(movie); //Sang objekterne tilføjes en arrayList
+                allMovies.add(movie);
             }
 
-            return allMovies; //Arraylisten sendes hele vejen op og vises  til sidst i vores gui.
+            return allMovies;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("Could not get Songs from database", ex);
+            throw new Exception("Could not get Movies from database", ex);
         }
 
         }

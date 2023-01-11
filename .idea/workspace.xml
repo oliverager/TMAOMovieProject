@@ -3,8 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/DatabaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/DatabaseConnector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewMovieController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/BE/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/BE/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/BLL/MovieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/BLL/MovieManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/DAL/IMovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/DAL/IMovieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/DAL/db/CatMovieDAO_DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/DAL/db/CatMovieDAO_DB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/DAL/db/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/DAL/db/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/DAL/db/MovieDAO_DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/DAL/db/MovieDAO_DB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/NewMovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/NewMovieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Model/MovieModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Model/MovieModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/View/NewMovie.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/View/NewMovie.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/View/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/View/mainWindow.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +75,20 @@
       <recent name="MovieProject.DAL" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="DatabaseConnector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MovieProject.DAL.db.DatabaseConnector" />
+      <module name="TMAO MovieProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MovieProject.DAL.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MovieProject.Main" />
       <module name="TMAO MovieProject" />
@@ -80,6 +105,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.DatabaseConnector" />
       </list>
     </recent_temporary>
   </component>

@@ -13,15 +13,10 @@ import java.time.LocalDate;
 import java.util.Properties;
 
 public class DatabaseConnector {
-
-<<<<<<< Updated upstream
-    private static final String PROP_FILE = "Data/database.settings";
-=======
     private static final String PROP_FILE = "TMAOMovieProject/Data/database.settings";
 
     //private static final String PROP_FILE = "Data/database.settings";
 
->>>>>>> Stashed changes
     private SQLServerDataSource dataSource;
 
     public DatabaseConnector() throws IOException {
@@ -29,7 +24,7 @@ public class DatabaseConnector {
         Properties databaseProperties = new Properties();
         databaseProperties.load(new FileInputStream(new File(PROP_FILE)));
 
-            String server = databaseProperties.getProperty("Server");
+        String server = databaseProperties.getProperty("Server");
         String database = databaseProperties.getProperty("Database");
         String user = databaseProperties.getProperty("User");
         String password = databaseProperties.getProperty("Password");
@@ -42,18 +37,17 @@ public class DatabaseConnector {
         dataSource.setTrustServerCertificate(true);
 
     }
-
     public Connection getConnection() throws SQLServerException {
         return dataSource.getConnection();
     }
-
-
     public static void main(String[] args) throws Exception {
+        DatabaseConnector databaseConnector = new DatabaseConnector();
 
+        try (Connection connection = databaseConnector.getConnection()) {
 
-        MovieDAO_DB movieDAODb=new MovieDAO_DB();
-        movieDAODb.addMovie("Prøve2",2.3 , 3.4, "ddddd");
+            System.out.println("Is it open? " + !connection.isClosed());
 
-        }
+        } //Connection gets closed here
     }
+}
 
