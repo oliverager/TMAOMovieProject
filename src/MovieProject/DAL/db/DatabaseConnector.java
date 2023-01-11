@@ -15,11 +15,19 @@ import java.util.Properties;
 public class DatabaseConnector {
 
 
+<<<<<<< Updated upstream
+=======
+//    private static final String PROP_FILE = "Data/database.settings";
+
+>>>>>>> Stashed changes
     private static final String PROP_FILE = "TMAOMovieProject/Data/database.settings";
 
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     private SQLServerDataSource dataSource;
 
     public DatabaseConnector() throws IOException {
