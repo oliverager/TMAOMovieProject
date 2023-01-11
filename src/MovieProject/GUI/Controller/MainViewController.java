@@ -34,6 +34,8 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+//import static sun.jvm.hotspot.debugger.windbg.WindbgDebuggerLocal.imagePath;
+
 public class MainViewController extends BaseController implements Initializable {
     public TextField searchField;
     public Button searchButton;
@@ -151,21 +153,27 @@ public class MainViewController extends BaseController implements Initializable 
         MovieTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
 
         {
+            String imagePath;
             txtMovieDescription.setEditable(true);
             txtMovieDescription.clear();
+            movieImageView.setVisible(false);
 
             categoriesDelete.setDisable(true);
             movieDelete.setDisable(false);
             movie = MovieTableView.getSelectionModel().getSelectedItem();
-            txtMovieDescription.appendText(movie.getDescription());
-            txtMovieDescription.setEditable(false);
-            String imagePath = movie.getImageFile();
 
-            try {
-                movieImageView.setImage(new Image(imagePath));
-            } catch (Exception e) {
-                displayError(e);
-            }
+            if (movie!=null) {
+                txtMovieDescription.appendText(movie.getDescription());
+                txtMovieDescription.setEditable(false);
+
+                imagePath = movie.getImageFile();
+                boolean filesExits = Files.exists(Path.of(imagePath)); //check om filen eksisterer
+                if (filesExits) {
+                    movieImageView.setVisible(true);
+                    movieImageView.setImage(new Image(imagePath));
+                }
+                }
+
         });
     }
     public void listenerCategoryList() {
@@ -203,7 +211,6 @@ public class MainViewController extends BaseController implements Initializable 
         stage.initModality(Modality.NONE);
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
         stage.showAndWait();
-        System.out.println("hej");
         MovieTableView.setItems(movieModel.showList());
 
     }
@@ -294,17 +301,20 @@ public class MainViewController extends BaseController implements Initializable 
     // Updates the user rating of a chosen movie
     public void updateRatingsAction(ActionEvent actionEvent) throws Exception {
         Movie movie = MovieTableView.getSelectionModel().getSelectedItem();
+
+
         String rating = JOptionPane.showInputDialog("");
         NumberTjek numberTjek = new NumberTjek();
 
-        boolean isRatingOk = numberTjek.tjekNumberIsOK(rating);
+        if (rating!=null) {
+            boolean isRatingOk = numberTjek.tjekNumberIsOK(rating);
 
-        if (isRatingOk) {
-            movieModel.updateMovieRating(movie, Double.parseDouble(rating));
-            MovieTableView.setItems(movieModel.showList());
-        }
-        else {
-            informationUser("Your rating value needs to be between 1-10 and a .");
+            if (isRatingOk) {
+                movieModel.updateMovieRating(movie, Double.parseDouble(rating));
+                MovieTableView.setItems(movieModel.showList());
+            } else {
+                informationUser("Your rating value needs to be between 1-10 and a .");
+            }
         }
     }
 
