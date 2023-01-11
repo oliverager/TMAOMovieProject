@@ -29,7 +29,6 @@ public class NewMovieController extends BaseController implements Initializable 
     private MainViewController mainController;
     private CategoriesModel categoriesModel;
     private CatMovieModel catMovieModel;
-    private ObservableList<Categories> getCategoriesToBeViewed;
     @FXML
     private Button cancelMovie,btnSelectCategory,btnImageChooseFile,btnMovieChooseFile, addMovie,btnDeselectCategory;
     @FXML
@@ -38,11 +37,6 @@ public class NewMovieController extends BaseController implements Initializable 
     private TableColumn<Categories, String> tableCategory,tableSelectedCategory;
     @FXML
     private TextField txtMovieFilePath, txtImageFilePath, txtImdbRating,txtMovieTitle,txtUserRating;
-
-
-
-
-
 
     //Initialize method that opens up the window and feeds data to the table-vies.
     @Override

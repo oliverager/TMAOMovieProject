@@ -2,6 +2,7 @@ package MovieProject.GUI.Controller;
 
 import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
+import MovieProject.BE.NumberTjek;
 import MovieProject.GUI.Model.CatMovieModel;
 import MovieProject.GUI.Model.CategoriesModel;
 import MovieProject.GUI.Model.MovieModel;
@@ -50,7 +51,7 @@ public class MainViewController extends BaseController implements Initializable 
     @FXML
     private Button movieDelete,categoriesDelete,updateRating;
     private String errorText;
-    MovieModel movieModel;
+    private MovieModel movieModel;
     CategoriesModel categoriesModel;
     CatMovieModel catMovieModel;
     Categories category;
@@ -80,7 +81,6 @@ public class MainViewController extends BaseController implements Initializable 
         listenerMovieList();
         mouseListenerCategories();
         listenerCategoryList();
-        movieDetails();
 
     }
 
@@ -136,21 +136,6 @@ public class MainViewController extends BaseController implements Initializable 
             }
         });
     }
-    public void movieDetails() {
-        MovieTableView.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 1) {
-                movie = MovieTableView.getSelectionModel().getSelectedItem();
-                txtMovieDescription.appendText(movie.getDescription());
-                String imagePath = movie.getImageFile();
-
-                try {
-                    movieImageView.setImage(new Image(imagePath));
-                } catch (Exception e) {
-                    displayError(e);
-                }
-            }
-        });
-    }
 
     public void mouseListenerCategories()
     {
@@ -166,8 +151,21 @@ public class MainViewController extends BaseController implements Initializable 
         MovieTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
 
         {
+            txtMovieDescription.setEditable(true);
+            txtMovieDescription.clear();
+
             categoriesDelete.setDisable(true);
             movieDelete.setDisable(false);
+            movie = MovieTableView.getSelectionModel().getSelectedItem();
+            txtMovieDescription.appendText(movie.getDescription());
+            txtMovieDescription.setEditable(false);
+            String imagePath = movie.getImageFile();
+
+            try {
+                movieImageView.setImage(new Image(imagePath));
+            } catch (Exception e) {
+                displayError(e);
+            }
         });
     }
     public void listenerCategoryList() {
@@ -205,6 +203,7 @@ public class MainViewController extends BaseController implements Initializable 
         stage.initModality(Modality.NONE);
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
         stage.showAndWait();
+        System.out.println("hej");
         MovieTableView.setItems(movieModel.showList());
 
     }
@@ -231,7 +230,7 @@ public class MainViewController extends BaseController implements Initializable 
     }
 
     public void playVideo(String moviePath) throws IOException {
-        boolean filesExits= Files.exists(Path.of(moviePath)); //check om filen eksisterer
+        boolean filesExits = Files.exists(Path.of(moviePath)); //check om filen eksisterer
         if (filesExits) {
             File file = new File(moviePath);
             Desktop desktop = Desktop.getDesktop();
@@ -295,12 +294,17 @@ public class MainViewController extends BaseController implements Initializable 
     // Updates the user rating of a chosen movie
     public void updateRatingsAction(ActionEvent actionEvent) throws Exception {
         Movie movie = MovieTableView.getSelectionModel().getSelectedItem();
-        double rating = Double.parseDouble(JOptionPane.showInputDialog(""));
-        if (rating >= 0 && rating <= 10) {
-            movieModel.updateMovieRating(movie, rating);
+        String rating = JOptionPane.showInputDialog("");
+        NumberTjek numberTjek = new NumberTjek();
+
+        boolean isRatingOk = numberTjek.tjekNumberIsOK(rating);
+
+        if (isRatingOk) {
+            movieModel.updateMovieRating(movie, Double.parseDouble(rating));
             MovieTableView.setItems(movieModel.showList());
-        } else {
-            informationUser("Your rating value needs to be between 1-10");
+        }
+        else {
+            informationUser("Your rating value needs to be between 1-10 and a .");
         }
     }
 
