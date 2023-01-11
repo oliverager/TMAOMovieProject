@@ -109,7 +109,16 @@ public class MainViewController extends BaseController implements Initializable 
     {
         MovieTableView.setOnKeyPressed(event -> {
             if (event.getCode()== KeyCode.ENTER)
-                System.out.println("hej");
+            {
+                movie = MovieTableView.getSelectionModel().getSelectedItem();
+                String moviePath = movie.getMovieFile();
+                try {
+                    playVideo(moviePath);
+                } catch (IOException e) {
+                    displayError(e);
+                }
+            }
+
         });
     }
 
@@ -117,7 +126,10 @@ public class MainViewController extends BaseController implements Initializable 
     {
         categoriesTableView.setOnKeyPressed(event -> {
             if (event.getCode()== KeyCode.ENTER)
-                System.out.println("hej");
+            {
+                selectMovieFromCategory();
+                MovieTableView.setItems(catMovieModel.getObservableMovies());
+            }
         });
     }
 
@@ -288,7 +300,7 @@ public class MainViewController extends BaseController implements Initializable 
     }
 
     // Deletes a chosen movie and gives an alert before deleting
-    public void deleteMoviesAction(ActionEvent actionEvent) throws Exception{
+    public void deleteMoviesAction(ActionEvent actionEvent) throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("You are about to delete a Movie");
@@ -299,12 +311,10 @@ public class MainViewController extends BaseController implements Initializable 
         if (result.get() == ButtonType.OK) {
             Movie deletedMovie = MovieTableView.getSelectionModel().getSelectedItem();
             movieModel.deletedMovie(deletedMovie);
-        } else {
-            //TODO
-        }
-        MovieTableView.setItems(movieModel.showList());
-    }
 
+            MovieTableView.setItems(movieModel.showList());
+        }
+    }
     // Updates the user rating of a chosen movie
     public void updateRatingsAction(ActionEvent actionEvent) throws Exception {
         Movie movie = MovieTableView.getSelectionModel().getSelectedItem();
@@ -352,9 +362,6 @@ public class MainViewController extends BaseController implements Initializable 
             Categories deleteCategory = categoriesTableView.getSelectionModel().getSelectedItem();
             categoriesModel.deletedCategories(deleteCategory);
         }
-        //If you're doing anything else than pressing the OK button it doesn't do anything.
-        else {
-            //TODO
-        }
+
     }
 }
