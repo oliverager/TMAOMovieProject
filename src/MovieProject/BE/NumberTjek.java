@@ -2,7 +2,7 @@ package MovieProject.BE;
 
 import java.util.regex.Pattern;
 
-public class numberTjek {
+public class NumberTjek {
 
     public boolean tjekNumberIsOK(String tjekNumberIsOK)
     {
@@ -15,7 +15,15 @@ public class numberTjek {
         boolean match1 = Pattern.matches(decimalPattern1, tjekNumberIsOK);
 
         if (match || match1)
-            isItANumber=true;
+        {
+            double number=Double.parseDouble(tjekNumberIsOK);
+
+            if (number>=0 && number<=10)
+                isItANumber=true;
+
+        }
+
+
 
 return isItANumber;
 

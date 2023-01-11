@@ -2,6 +2,7 @@ package MovieProject.GUI.Controller;
 
 import MovieProject.BE.Categories;
 import MovieProject.BE.Movie;
+import MovieProject.BE.NumberTjek;
 import MovieProject.GUI.Model.CatMovieModel;
 import MovieProject.GUI.Model.CategoriesModel;
 import MovieProject.GUI.Model.MovieModel;
@@ -291,11 +292,16 @@ public class MainViewController extends BaseController implements Initializable 
     // Updates the user rating of a chosen movie
     public void updateRatingsAction(ActionEvent actionEvent) throws Exception {
         Movie movie = MovieTableView.getSelectionModel().getSelectedItem();
-        double rating = Double.parseDouble(JOptionPane.showInputDialog(""));
-        if (rating >= 0 && rating <= 10) {
-            movieModel.updateMovieRating(movie, rating);
+                String rating = JOptionPane.showInputDialog("");
+        NumberTjek numberTjek=new NumberTjek();
+
+        boolean isRatingOk=numberTjek.tjekNumberIsOK(rating);
+
+        if (isRatingOk) {
+            movieModel.updateMovieRating(movie, Double.parseDouble(rating));
             MovieTableView.setItems(movieModel.showList());
-        } else {
+        }
+         else {
             informationUser("Your rating value needs to be between 1-10");
         }
     }
