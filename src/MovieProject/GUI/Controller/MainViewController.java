@@ -124,6 +124,7 @@ public class MainViewController extends BaseController implements Initializable 
     public void mouseListenerMovie() {
         MovieTableView.setOnMouseClicked(event -> {
 
+            if (movie!=null)
             if (event.getClickCount() == 2) {
 
                 movie = MovieTableView.getSelectionModel().getSelectedItem();
@@ -142,6 +143,9 @@ public class MainViewController extends BaseController implements Initializable 
     {
         categoriesTableView.setOnMouseClicked(event -> {
 
+            category = categoriesTableView.getSelectionModel().getSelectedItem(); //Den bruger vi i næste linje. Nogle gange klikker man i tomt område og der kommer fejlbeskeder
+                                                                                    //ikke når man har valgt en kategori og checker derefter om noget er valgt.
+            if (category!=null)
             if (event.getClickCount() == 2)
                 selectMovieFromCategory();
             MovieTableView.setItems(catMovieModel.getObservableMovies());
@@ -157,8 +161,7 @@ public class MainViewController extends BaseController implements Initializable 
             txtMovieDescription.clear();
             movieImageView.setVisible(false);
 
-            updateRating.setDisable(false
-            );
+            updateRating.setDisable(false);
             categoriesDelete.setDisable(true);
             movieDelete.setDisable(false);
 
