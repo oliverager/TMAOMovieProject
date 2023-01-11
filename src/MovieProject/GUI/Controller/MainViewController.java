@@ -38,9 +38,8 @@ import java.util.ResourceBundle;
 
 public class MainViewController extends BaseController implements Initializable {
     public TextField searchField;
-    public Button searchButton;
-    public TableColumn IMDBTableColumn;
-    public Button btnClearCategories;
+        public TableColumn IMDBTableColumn;
+
     public ImageView movieImageView;
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
@@ -51,7 +50,7 @@ public class MainViewController extends BaseController implements Initializable 
     @FXML
     private TextArea txtMovieDescription;
     @FXML
-    private Button movieDelete,categoriesDelete,updateRating;
+    private Button movieDelete,categoriesDelete,updateRating,searchButton,btnClearCategories;
     private String errorText;
     private MovieModel movieModel;
     CategoriesModel categoriesModel;
@@ -158,8 +157,11 @@ public class MainViewController extends BaseController implements Initializable 
             txtMovieDescription.clear();
             movieImageView.setVisible(false);
 
+            updateRating.setDisable(false);
             categoriesDelete.setDisable(true);
             movieDelete.setDisable(false);
+
+
             movie = MovieTableView.getSelectionModel().getSelectedItem();
 
             if (movie!=null) {
@@ -181,6 +183,7 @@ public class MainViewController extends BaseController implements Initializable 
         {
             movieDelete.setDisable(true);
             categoriesDelete.setDisable(false);
+            updateRating.setDisable(true);
         });
     }
 
