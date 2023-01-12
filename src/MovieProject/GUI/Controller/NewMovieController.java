@@ -105,7 +105,8 @@ public class NewMovieController extends BaseController implements Initializable 
 
                 for (int i = 0; i < sizeOfList; i++) {
 
-                    //
+                    //uses size of observable list til pull the most recent movie added which would be the one from the add
+                    //movie window, that allows us to add the movie and connect it with categories with one click.
                     int sizeofMovie = movieModel.showList().size();
                     Movie movie = movieModel.showList().get(sizeofMovie - 1);
                     Categories categories = lstSelectedCategory.getItems().get(i);
