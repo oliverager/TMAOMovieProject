@@ -34,11 +34,12 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+//import static sun.jvm.hotspot.debugger.windbg.WindbgDebuggerLocal.imagePath;
+
 public class MainViewController extends BaseController implements Initializable {
     public TextField searchField;
-    public Button searchButton;
-    public TableColumn IMDBTableColumn;
-    public Button btnClearCategories;
+        public TableColumn IMDBTableColumn;
+
     public ImageView movieImageView;
     @FXML
     private TableColumn ToOldTableColumn,RatingTableColumn,NameTableColumn,categoriesTableColumn;
@@ -49,7 +50,7 @@ public class MainViewController extends BaseController implements Initializable 
     @FXML
     private TextArea txtMovieDescription;
     @FXML
-    private Button movieDelete,categoriesDelete,updateRating;
+    private Button movieDelete,categoriesDelete,updateRating,searchButton,btnClearCategories;
     private String errorText;
     private MovieModel movieModel;
     CategoriesModel categoriesModel;
@@ -108,7 +109,16 @@ public class MainViewController extends BaseController implements Initializable 
     {
         MovieTableView.setOnKeyPressed(event -> {
             if (event.getCode()== KeyCode.ENTER)
-                System.out.println("hej");
+            {
+                movie = MovieTableView.getSelectionModel().getSelectedItem();
+                String moviePath = movie.getMovieFile();
+                try {
+                    playVideo(moviePath);
+                } catch (IOException e) {
+                    displayError(e);
+                }
+            }
+
         });
     }
 
@@ -116,13 +126,17 @@ public class MainViewController extends BaseController implements Initializable 
     {
         categoriesTableView.setOnKeyPressed(event -> {
             if (event.getCode()== KeyCode.ENTER)
-                System.out.println("hej");
+            {
+                selectMovieFromCategory();
+                MovieTableView.setItems(catMovieModel.getObservableMovies());
+            }
         });
     }
 
     public void mouseListenerMovie() {
         MovieTableView.setOnMouseClicked(event -> {
 
+            if (movie!=null)
             if (event.getClickCount() == 2) {
 
                 movie = MovieTableView.getSelectionModel().getSelectedItem();
@@ -141,6 +155,9 @@ public class MainViewController extends BaseController implements Initializable 
     {
         categoriesTableView.setOnMouseClicked(event -> {
 
+            category = categoriesTableView.getSelectionModel().getSelectedItem(); //Den bruger vi i næste linje. Nogle gange klikker man i tomt område og der kommer fejlbeskeder
+                                                                                    //ikke når man har valgt en kategori og checker derefter om noget er valgt.
+            if (category!=null)
             if (event.getClickCount() == 2)
                 selectMovieFromCategory();
             MovieTableView.setItems(catMovieModel.getObservableMovies());
@@ -151,21 +168,30 @@ public class MainViewController extends BaseController implements Initializable 
         MovieTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
 
         {
+            String imagePath;
             txtMovieDescription.setEditable(true);
             txtMovieDescription.clear();
+            movieImageView.setVisible(false);
 
+            updateRating.setDisable(false);
             categoriesDelete.setDisable(true);
             movieDelete.setDisable(false);
-            movie = MovieTableView.getSelectionModel().getSelectedItem();
-            txtMovieDescription.appendText(movie.getDescription());
-            txtMovieDescription.setEditable(false);
-            String imagePath = movie.getImageFile();
 
-            try {
-                movieImageView.setImage(new Image(imagePath));
-            } catch (Exception e) {
-                displayError(e);
-            }
+
+            movie = MovieTableView.getSelectionModel().getSelectedItem();
+
+            if (movie!=null) {
+                txtMovieDescription.appendText(movie.getDescription());
+                txtMovieDescription.setEditable(false);
+
+                imagePath = movie.getImageFile();
+                boolean filesExits = Files.exists(Path.of(imagePath)); //check om filen eksisterer
+                if (filesExits) {
+                    movieImageView.setVisible(true);
+                    movieImageView.setImage(new Image(imagePath));
+                }
+                }
+
         });
     }
     public void listenerCategoryList() {
@@ -173,6 +199,7 @@ public class MainViewController extends BaseController implements Initializable 
         {
             movieDelete.setDisable(true);
             categoriesDelete.setDisable(false);
+            updateRating.setDisable(true);
         });
     }
 
@@ -203,7 +230,6 @@ public class MainViewController extends BaseController implements Initializable 
         stage.initModality(Modality.NONE);
         stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
         stage.showAndWait();
-        System.out.println("hej");
         MovieTableView.setItems(movieModel.showList());
 
     }
@@ -274,7 +300,7 @@ public class MainViewController extends BaseController implements Initializable 
     }
 
     // Deletes a chosen movie and gives an alert before deleting
-    public void deleteMoviesAction(ActionEvent actionEvent) throws Exception{
+    public void deleteMoviesAction(ActionEvent actionEvent) throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("You are about to delete a Movie");
@@ -285,26 +311,27 @@ public class MainViewController extends BaseController implements Initializable 
         if (result.get() == ButtonType.OK) {
             Movie deletedMovie = MovieTableView.getSelectionModel().getSelectedItem();
             movieModel.deletedMovie(deletedMovie);
-        } else {
-            //TODO
-        }
-        MovieTableView.setItems(movieModel.showList());
-    }
 
+            MovieTableView.setItems(movieModel.showList());
+        }
+    }
     // Updates the user rating of a chosen movie
     public void updateRatingsAction(ActionEvent actionEvent) throws Exception {
         Movie movie = MovieTableView.getSelectionModel().getSelectedItem();
+
+
         String rating = JOptionPane.showInputDialog("");
         NumberTjek numberTjek = new NumberTjek();
 
-        boolean isRatingOk = numberTjek.tjekNumberIsOK(rating);
+        if (rating!=null) {
+            boolean isRatingOk = numberTjek.tjekNumberIsOK(rating);
 
-        if (isRatingOk) {
-            movieModel.updateMovieRating(movie, Double.parseDouble(rating));
-            MovieTableView.setItems(movieModel.showList());
-        }
-        else {
-            informationUser("Your rating value needs to be between 1-10 and a .");
+            if (isRatingOk) {
+                movieModel.updateMovieRating(movie, Double.parseDouble(rating));
+                MovieTableView.setItems(movieModel.showList());
+            } else {
+                informationUser("Your rating value needs to be between 1-10 and a .");
+            }
         }
     }
 
@@ -335,9 +362,6 @@ public class MainViewController extends BaseController implements Initializable 
             Categories deleteCategory = categoriesTableView.getSelectionModel().getSelectedItem();
             categoriesModel.deletedCategories(deleteCategory);
         }
-        //If you're doing anything else than pressing the OK button it doesn't do anything.
-        else {
-            //TODO
-        }
+
     }
 }

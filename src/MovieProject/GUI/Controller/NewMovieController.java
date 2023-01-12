@@ -4,6 +4,7 @@ import MovieProject.BE.Categories;
 
 
 import MovieProject.BE.Movie;
+import MovieProject.BE.NumberTjek;
 import MovieProject.GUI.Model.CatMovieModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
@@ -17,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,11 +67,20 @@ public class NewMovieController extends BaseController implements Initializable 
     //the method that adds and binds the movie with the categories you selected.
     public void handleAddMovie(ActionEvent actionEvent) throws Exception {
 
+        boolean closeOK=false;
         //getting info from our txt-lines and table-views.
         String title = txtMovieTitle.getText();
         String description = txtDescription.getText();
-        Double userRating = Double.parseDouble(txtUserRating.getText());
-        Double imdbRating = Double.parseDouble(txtImdbRating.getText());
+
+       String userRating=txtUserRating.getText();
+        String imdbRating = txtImdbRating.getText();
+
+        NumberTjek numberTjek=new NumberTjek();
+
+
+        boolean userRating1=numberTjek.tjekNumberIsOK(userRating);
+        boolean imdbRating1=numberTjek.tjekNumberIsOK(imdbRating);
+
         String mfPath = txtMovieFilePath.getText();
         String ifPath = txtImageFilePath.getText();
 
@@ -77,20 +88,21 @@ public class NewMovieController extends BaseController implements Initializable 
         int sizeOfList = lstSelectedCategory.getItems().size();
 
 
-        Stage stage = (Stage) addMovie.getScene().getWindow();
-        stage.close();
 
 
-        if (userRating.doubleValue() > 0 && userRating.doubleValue() <= 10 && imdbRating.doubleValue() > 0 && imdbRating.doubleValue() <= 10) {
-            try {
 
-                //adding the movie
-                movieModel.addMovie(title, description, userRating, imdbRating, mfPath, ifPath);
-
+        if (userRating1 && imdbRating1) {
+            //adding the movie
+            movieModel.addMovie(title, description, Double.parseDouble(userRating), Double.parseDouble(imdbRating), mfPath, ifPath);
+            closeOK=true; //Vi vil kun lukke vinduet, hvis filmen er gemt. Derfor sættes denne boolean.
+        }
+        else
+            mainController.informationUser("Your rating value needs to be between 1-10");
 
                 /* iterable for loop where I have to be smaller than the size of the list of selected categories.
                   I increase each time it goes through the loop, each pass through the loop connects a category with the movie
                 */
+
                 for (int i = 0; i < sizeOfList; i++) {
 
                     //
@@ -100,14 +112,18 @@ public class NewMovieController extends BaseController implements Initializable 
                     catMovieModel.addMovieToCategory(movie ,categories);
                 }
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            mainController.informationUser("Your rating value needs to be between 1-10");
-        }
+                if (closeOK) //Da filmen er gemt, kan vi godt lukke vinduet.
+                {
+                    Stage stage = (Stage) addMovie.getScene().getWindow();
+                    stage.close();
+                }
 
-    }
+            }
+
+
+
+
+
     public void handleCancelMovie(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelMovie.getScene().getWindow();
         stage.close();
@@ -122,6 +138,8 @@ public class NewMovieController extends BaseController implements Initializable 
         FileChooser fc = new FileChooser();
         Stage fileStage = (Stage) cancelMovie.getScene().getWindow();
         File f = fc.showOpenDialog(fileStage);
+
+        if (f != null)
         if (f.getPath().endsWith(".jpg") || f.getPath().endsWith(".png")) {
             txtImageFilePath.setText(f.getPath());
         }
@@ -140,6 +158,7 @@ public class NewMovieController extends BaseController implements Initializable 
         FileChooser fc = new FileChooser();
         Stage fileStage = (Stage) cancelMovie.getScene().getWindow();
         File f = fc.showOpenDialog(fileStage);
+        if (f != null)
         if (f.getPath().endsWith(".mp4") || f.getPath().endsWith("mpeg4")) {
             txtMovieFilePath.setText(f.getPath());
         }

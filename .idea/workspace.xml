@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="646bfde4-4467-4b92-afd4-d39bc85f6ffb" name="Changes" comment="Movie and Categories">
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> cc49d03d0d9ae2ab510056c6e5142d536beab083
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/CategoriesDAO_DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/CategoriesDAO_DB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/DatabaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/DAL/db/DatabaseConnector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/MainViewController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewMovieController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/Controller/NewMovieController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/GUI/View/mainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TMAO MovieProject/MovieProject/Main.class" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/NewMovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovieProject/GUI/Controller/NewMovieController.java" afterDir="false" />
+>>>>>>> cc49d03d0d9ae2ab510056c6e5142d536beab083
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +47,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/IdeaProjects/TMAOMovieProject/src/MovieProject&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "G:/Mit drev/Datamatiker/Java/Assigment/TomasTunes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Morte\IdeaProjects\TMAOMovieProject" />
@@ -114,7 +130,11 @@
       <workItem from="1672990959729" duration="4806000" />
       <workItem from="1673251448894" duration="6000" />
       <workItem from="1673337624495" duration="1488000" />
+<<<<<<< HEAD
       <workItem from="1673511019783" duration="31000" />
+=======
+      <workItem from="1673444313854" duration="4462000" />
+>>>>>>> cc49d03d0d9ae2ab510056c6e5142d536beab083
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1672736843025</created>
